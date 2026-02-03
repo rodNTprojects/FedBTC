@@ -690,11 +690,17 @@ If `babd.zip` is too large or unavailable, the pipeline uses `config/calibration
 
 ### Key references
 
-- Weber et al. (2019). *Anti-Money Laundering in Bitcoin: Experimenting with Graph Convolutional Networks for Financial Forensics.* KDD Workshop on Anomaly Detection in Finance.
-- Nguyen et al. (2022). *FLAME: Taming Backdoors in Federated Learning.* USENIX Security 2022.
-- Kairouz & McMahan (2021). *Advances and Open Problems in Federated Learning.* Foundations and Trends in Machine Learning, 14(1–2).
-- Meiklejohn et al. (2013). *A Fistful of Bitcoins: Characterizing Payments Among Men with No Names.* ACM IMC 2013.
+- Weber et al. (2019). *Anti-Money Laundering in Bitcoin: Experimenting with GCN for Financial Forensics.* KDD Workshop.
 - Xiang et al. (2024). *BABD-13: A Bitcoin Address Behavior Dataset with 13 Categories.* IEEE TIFS.
+- Nguyen et al. (2022). *FLAME: Taming Backdoors in Federated Learning.* USENIX Security.
+- McMahan et al. (2018). *Learning Differentially Private Recurrent Language Models.* ICLR.
+- Madry et al. (2018). *Towards Deep Learning Models Resistant to Adversarial Attacks.* ICLR.
+- Juhász et al. (2018). *Bitcoin Transaction Activity Analysis via Circadian Rhythms.* Royal Society Open Science.
+- Zhou et al. (2023). *Volume Distribution Patterns in Cryptocurrency Exchanges.* IEEE Access.
+- Meiklejohn et al. (2013). *A Fistful of Bitcoins.* ACM IMC.
+- Kairouz & McMahan (2021). *Advances and Open Problems in Federated Learning.* FnTML.
+- CoinMarketCap (2024). Exchange fee structure data. https://coinmarketcap.com
+- Kaiko (2024). Exchange Benchmark Report. https://www.kaiko.com
 
 ---
 
@@ -702,3 +708,4 @@ If `babd.zip` is too large or unavailable, the pipeline uses `config/calibration
 
 
 This project is developed for academic research purposes. Please contact the authors before any commercial use.
+
