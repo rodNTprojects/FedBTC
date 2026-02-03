@@ -1,0 +1,212 @@
+{
+  "approach": "fl_nosec",
+  "approach_name": "Federated Learning (No Security)",
+  "training_type": "federated",
+  "privacy_level": "isolation",
+  "privacy_description": "Data isolation only - no DP or defenses",
+  "data_config": {
+    "total_transactions": 203769,
+    "feature_count": 191,
+    "transactions_per_exchange": [
+      67923,
+      67923,
+      67923
+    ],
+    "train_size_per_exchange": [
+      40753,
+      40753,
+      40753
+    ],
+    "test_size_per_exchange": [
+      13585,
+      13585,
+      13585
+    ],
+    "split_ratio": "60/20/20",
+    "split_seed": 42,
+    "num_exchanges": 3,
+    "num_categories": 6
+  },
+  "model_config": {
+    "architecture": "DualAttributionGCN",
+    "in_channels": 191,
+    "hidden_dim": 128,
+    "dropout": 0.3,
+    "num_gcn_layers": 3
+  },
+  "training_config": {
+    "rounds": 20,
+    "local_epochs": 3,
+    "epochs_equivalent": 60,
+    "learning_rate": 0.002,
+    "optimizer": "Adam",
+    "loss_type": "FocalLoss",
+    "alpha_forward": 1.0,
+    "alpha_backward": 1.5,
+    "focal_gamma": 2.0,
+    "aggregation": "FedAvg"
+  },
+  "security_config": {
+    "differential_privacy": false,
+    "epsilon": null,
+    "delta": null,
+    "noise_multiplier": null,
+    "adversarial_training": false,
+    "byzantine_defense": null,
+    "flame_enabled": false,
+    "fedval_enabled": false
+  },
+  "test_metrics": {
+    "forward_accuracy": 0.8585449457168579,
+    "forward_top2_accuracy": null,
+    "backward_accuracy": 0.8874711791674296,
+    "backward_per_category": {
+      "E-commerce": 0.8800548513730367,
+      "Gambling": 0.9507550398508707,
+      "Services": 0.774676521619161,
+      "Retail": 0.8906333645184835,
+      "Luxury": 0.9399007558822632
+    },
+    "per_exchange": [
+      {
+        "exchange_id": 0,
+        "forward_accuracy": 0.8863452076911926,
+        "backward_accuracy": 0.8861709833145142,
+        "per_category": {
+          "E-commerce": 0.8827838897705078,
+          "Gambling": 0.9599999785423279,
+          "Services": 0.7627965211868286,
+          "Retail": 0.8829787373542786,
+          "Luxury": 0.9365482330322266
+        }
+      },
+      {
+        "exchange_id": 1,
+        "forward_accuracy": 0.8527787923812866,
+        "backward_accuracy": 0.8900498747825623,
+        "per_category": {
+          "E-commerce": 0.8763127326965332,
+          "Gambling": 0.948235273361206,
+          "Services": 0.7897371649742126,
+          "Retail": 0.8958097100257874,
+          "Luxury": 0.9355230927467346
+        }
+      },
+      {
+        "exchange_id": 2,
+        "forward_accuracy": 0.8365108370780945,
+        "backward_accuracy": 0.8861926794052124,
+        "per_category": {
+          "E-commerce": 0.8810679316520691,
+          "Gambling": 0.9440298676490784,
+          "Services": 0.7714958786964417,
+          "Retail": 0.8931116461753845,
+          "Luxury": 0.9476309418678284
+        }
+      }
+    ],
+    "forward_improvement_vs_random": 0.5252116123835247,
+    "backward_improvement_vs_random": 0.6874711791674295
+  },
+  "history": {
+    "rounds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "forward_accuracy": [
+      0.45211631059646606,
+      0.7037173310915629,
+      0.753551721572876,
+      0.8042203585306803,
+      0.8413691719373068,
+      0.8639675974845886,
+      0.8728744983673096,
+      0.8771193623542786,
+      0.8804318507512411,
+      0.8809471130371094,
+      0.8840633034706116,
+      0.8848975499471029,
+      0.8864679336547852,
+      0.8881118893623352,
+      0.8894123435020447,
+      0.8891424338022867,
+      0.8897558649381002,
+      0.8899521430333456,
+      0.8903202017148336,
+      0.8901975154876709
+    ],
+    "backward_accuracy": [
+      0.3159380455811818,
+      0.425286998351415,
+      0.5941774249076843,
+      0.6953782836596171,
+      0.7600791454315186,
+      0.8068996866544088,
+      0.832426130771637,
+      0.8471706708272299,
+      0.8542086283365885,
+      0.8606045246124268,
+      0.8623990813891093,
+      0.8675697048505148,
+      0.8704088727633158,
+      0.8723603884379069,
+      0.8744578957557678,
+      0.876410444577535,
+      0.8777691523234049,
+      0.8800546129544576,
+      0.8802925944328308,
+      0.8813488086064657
+    ],
+    "loss": [
+      2.974121517605252,
+      2.5380121866861978,
+      2.054308772087097,
+      1.663946059015062,
+      1.3971893919838798,
+      1.2192028628455267,
+      1.1004601981904771,
+      1.0270792378319635,
+      0.9760580990049573,
+      0.939035541481442,
+      0.9057835075590345,
+      0.880418750974867,
+      0.8618556327290006,
+      0.8427149785889521,
+      0.8277332319153681,
+      0.8151376777225071,
+      0.8029535942607456,
+      0.7905703584353129,
+      0.7811378770404391,
+      0.7723772128423055
+    ]
+  },
+  "metadata": {
+    "timestamp": "2026-01-27T02:54:05.243755",
+    "script": "p3_train_federated.py",
+    "version": "v2_categories",
+    "device": "cpu",
+    "flower_used": false,
+    "targets_met": {
+      "forward_target_70": "True",
+      "backward_target_60": "True"
+    }
+  }
+}

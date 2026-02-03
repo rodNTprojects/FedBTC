@@ -1,0 +1,501 @@
+merchant_id,name,category,category_id,num_addresses,avg_transaction_amount,transaction_frequency,geographic_region,known_criminal,registration_year
+MERCH_000,"E-commerce_Rodriguez, Figueroa and Sanchez",E-commerce,1,43,0.07806335884307174,weekly,Asia,False,2016
+MERCH_001,E-commerce_Doyle Ltd,E-commerce,1,23,0.22660045384368993,hourly,Asia,False,2019
+MERCH_002,"E-commerce_Mcclain, Miller and Henderson",E-commerce,1,40,0.20040393993757669,hourly,Asia,False,2016
+MERCH_003,E-commerce_Davis and Sons,E-commerce,1,25,0.05344059226935315,daily,Asia,False,2019
+MERCH_004,"E-commerce_Guzman, Hoffman and Baldwin",E-commerce,1,48,0.13837634425950546,daily,Europe,False,2018
+MERCH_005,"E-commerce_Gardner, Robinson and Lawrence",E-commerce,1,20,0.08823135205965336,daily,Europe,False,2017
+MERCH_006,E-commerce_Blake and Sons,E-commerce,1,48,1.7497764397101363,hourly,Asia,False,2019
+MERCH_007,"E-commerce_Henderson, Ramirez and Lewis",E-commerce,1,13,0.20073553608908243,hourly,Americas,False,2018
+MERCH_008,E-commerce_Garcia-James,E-commerce,1,18,0.07425472625152534,hourly,Asia,False,2018
+MERCH_009,E-commerce_Abbott-Munoz,E-commerce,1,11,0.349042991709154,daily,Americas,False,2017
+MERCH_010,E-commerce_Blair PLC,E-commerce,1,18,0.04104204583878769,weekly,Asia,False,2016
+MERCH_011,E-commerce_Dudley Group,E-commerce,1,8,0.08990048867800692,daily,Americas,False,2016
+MERCH_012,E-commerce_Arnold Ltd,E-commerce,1,48,0.28321939905952337,hourly,Europe,False,2015
+MERCH_013,"E-commerce_Mcclure, Ward and Lee",E-commerce,1,44,0.1606332088736999,weekly,Asia,False,2019
+MERCH_014,E-commerce_Williams and Sons,E-commerce,1,28,0.03520109470241122,daily,Europe,False,2019
+MERCH_015,E-commerce_Galloway-Wyatt,E-commerce,1,5,0.05610158206510525,hourly,Asia,False,2015
+MERCH_016,E-commerce_James Group,E-commerce,1,48,0.2557141930301022,weekly,Asia,False,2016
+MERCH_017,"E-commerce_Flowers, Martin and Kelly",E-commerce,1,43,0.05465466707862996,daily,Americas,False,2015
+MERCH_018,"E-commerce_Adams, Zuniga and Wong",E-commerce,1,12,0.05522524003856064,daily,Asia,False,2019
+MERCH_019,"E-commerce_Reid, Ferguson and Sanchez",E-commerce,1,39,0.12099720649054016,daily,Europe,False,2017
+MERCH_020,E-commerce_Gray-Mayo,E-commerce,1,5,0.18765412409900914,weekly,Asia,False,2017
+MERCH_021,"E-commerce_Watts, Robinson and Nguyen",E-commerce,1,13,0.12479049919889557,weekly,Europe,False,2018
+MERCH_022,E-commerce_Perez Inc,E-commerce,1,17,0.15731408637827018,daily,Asia,False,2018
+MERCH_023,E-commerce_Morales-Jones,E-commerce,1,34,0.120823889611825,daily,Asia,False,2017
+MERCH_024,"E-commerce_Walter, Edwards and Rios",E-commerce,1,33,0.060295753362597404,weekly,Americas,False,2015
+MERCH_025,E-commerce_Wilkerson-Day,E-commerce,1,10,0.08194089833599541,daily,Europe,False,2018
+MERCH_026,E-commerce_Baker and Sons,E-commerce,1,34,0.09593537020052088,daily,Europe,False,2015
+MERCH_027,"E-commerce_Hoffman, Baker and Richards",E-commerce,1,5,0.28673004534952035,daily,Asia,False,2018
+MERCH_028,"E-commerce_Ross, Robinson and Bright",E-commerce,1,17,0.009512238488140807,daily,Europe,False,2018
+MERCH_029,"E-commerce_Snyder, Campos and Callahan",E-commerce,1,28,0.1911910563040734,weekly,Europe,False,2015
+MERCH_030,E-commerce_Burton Ltd,E-commerce,1,16,0.1328478481482896,daily,Europe,False,2015
+MERCH_031,E-commerce_Carlson-Cruz,E-commerce,1,6,0.02538734082304238,daily,Europe,False,2019
+MERCH_032,"E-commerce_Ferrell, Rice and Maddox",E-commerce,1,36,0.1116528287907276,daily,Asia,False,2018
+MERCH_033,E-commerce_Frazier Inc,E-commerce,1,15,0.1829664168126832,daily,Europe,False,2019
+MERCH_034,"E-commerce_Dyer, Potter and Mack",E-commerce,1,38,0.24337716825944797,hourly,Americas,False,2018
+MERCH_035,E-commerce_Rodriguez-Graham,E-commerce,1,10,1.209800688520727,daily,Americas,False,2018
+MERCH_036,E-commerce_Smith-Bowen,E-commerce,1,40,0.1365785114485506,daily,Asia,False,2018
+MERCH_037,"E-commerce_Baker, Mason and White",E-commerce,1,45,0.09389864746807293,daily,Europe,False,2016
+MERCH_038,E-commerce_Harrell LLC,E-commerce,1,44,0.09178885453904076,daily,Americas,False,2016
+MERCH_039,"E-commerce_Romero, Gonzalez and Brooks",E-commerce,1,39,0.05582617833455177,daily,Europe,False,2015
+MERCH_040,E-commerce_Ryan PLC,E-commerce,1,6,0.36805812966634255,daily,Europe,False,2017
+MERCH_041,E-commerce_George Group,E-commerce,1,20,0.15761827695736896,weekly,Americas,False,2015
+MERCH_042,E-commerce_Rodriguez LLC,E-commerce,1,28,0.26003171127795505,daily,Europe,False,2015
+MERCH_043,E-commerce_Allen-Allen,E-commerce,1,39,0.4076637711941948,weekly,Europe,False,2016
+MERCH_044,"E-commerce_Arroyo, Miller and Tucker",E-commerce,1,6,0.3864887156307249,daily,Asia,False,2015
+MERCH_045,E-commerce_Spence PLC,E-commerce,1,18,0.5092102216882175,daily,Asia,False,2017
+MERCH_046,E-commerce_Anderson Group,E-commerce,1,21,0.20558792492314437,daily,Asia,False,2019
+MERCH_047,"E-commerce_Martin, Rose and Obrien",E-commerce,1,12,0.020516454714882035,daily,Americas,False,2015
+MERCH_048,E-commerce_Hickman Ltd,E-commerce,1,32,0.3166749524152458,daily,Asia,False,2018
+MERCH_049,"E-commerce_Harris, Collins and Carney",E-commerce,1,39,0.20075700180433667,weekly,Europe,False,2018
+MERCH_050,"E-commerce_Brooks, Lam and Hayes",E-commerce,1,32,0.02274861391702359,weekly,Asia,False,2019
+MERCH_051,E-commerce_Walker LLC,E-commerce,1,28,0.10612533683530016,daily,Asia,False,2017
+MERCH_052,E-commerce_Chapman and Sons,E-commerce,1,37,0.10888565578074606,daily,Europe,False,2017
+MERCH_053,"E-commerce_Robinson, Jones and Welch",E-commerce,1,22,0.084141333833131,daily,Americas,False,2016
+MERCH_054,E-commerce_Jones Inc,E-commerce,1,7,0.0559186436687658,daily,Americas,False,2016
+MERCH_055,E-commerce_Jones-Young,E-commerce,1,31,0.15782398371664233,daily,Europe,False,2015
+MERCH_056,"E-commerce_Washington, Ryan and Cummings",E-commerce,1,13,0.05187034204186934,daily,Americas,False,2017
+MERCH_057,"E-commerce_Johnston, Sanchez and Kennedy",E-commerce,1,29,0.5390238848292911,daily,Europe,False,2015
+MERCH_058,E-commerce_Lee-Davis,E-commerce,1,40,0.23952212431325495,weekly,Americas,False,2018
+MERCH_059,E-commerce_Gomez-Jenkins,E-commerce,1,27,0.421289783673765,hourly,Asia,False,2017
+MERCH_060,"E-commerce_Brown, Valdez and Lucas",E-commerce,1,29,0.1572110225157652,daily,Europe,False,2017
+MERCH_061,E-commerce_Powell LLC,E-commerce,1,41,0.15581394684570612,daily,Americas,False,2018
+MERCH_062,E-commerce_Wright and Sons,E-commerce,1,48,0.06519538259078028,hourly,Asia,False,2017
+MERCH_063,"E-commerce_West, Henderson and Ramirez",E-commerce,1,44,0.16804198662480604,weekly,Americas,False,2018
+MERCH_064,E-commerce_Baxter Inc,E-commerce,1,46,0.3859759350059234,daily,Asia,False,2016
+MERCH_065,E-commerce_Morton-Chase,E-commerce,1,41,0.07218162639914445,daily,Europe,False,2015
+MERCH_066,E-commerce_Williams PLC,E-commerce,1,16,0.04075012356394651,daily,Europe,False,2015
+MERCH_067,E-commerce_Novak and Sons,E-commerce,1,44,0.09685878016893017,weekly,Asia,False,2019
+MERCH_068,E-commerce_Russell Group,E-commerce,1,43,0.061568684244697136,weekly,Europe,False,2016
+MERCH_069,E-commerce_Hancock Inc,E-commerce,1,20,0.9264681710116939,daily,Europe,False,2019
+MERCH_070,E-commerce_Gray Group,E-commerce,1,18,0.2722845504528237,daily,Asia,False,2019
+MERCH_071,E-commerce_House-Glover,E-commerce,1,27,0.24657147544591493,hourly,Americas,False,2018
+MERCH_072,E-commerce_Henderson-Bernard,E-commerce,1,38,0.13558095152736907,daily,Asia,False,2016
+MERCH_073,"E-commerce_Stanley, Tucker and Lee",E-commerce,1,32,0.28821033999693557,daily,Americas,False,2018
+MERCH_074,E-commerce_Novak PLC,E-commerce,1,39,0.07315800844277194,daily,Americas,False,2017
+MERCH_075,"E-commerce_Daniels, Adkins and Brown",E-commerce,1,5,1.11774989435508,weekly,Americas,False,2018
+MERCH_076,"E-commerce_Woods, Calhoun and Schmidt",E-commerce,1,33,0.08320625397157473,daily,Americas,False,2016
+MERCH_077,E-commerce_Yu Inc,E-commerce,1,38,0.16655965612077855,daily,Asia,False,2016
+MERCH_078,E-commerce_Jones Inc,E-commerce,1,49,0.2119613513361224,daily,Asia,False,2017
+MERCH_079,"E-commerce_Hensley, Powell and David",E-commerce,1,39,0.12508876375260675,daily,Europe,False,2019
+MERCH_080,"E-commerce_Sanchez, Wheeler and Harvey",E-commerce,1,16,0.6394542350543716,weekly,Europe,False,2015
+MERCH_081,E-commerce_Sandoval-Cunningham,E-commerce,1,24,0.08720288397779316,weekly,Europe,False,2017
+MERCH_082,E-commerce_Donovan-Harris,E-commerce,1,23,0.1871520955527665,weekly,Asia,False,2019
+MERCH_083,"E-commerce_Edwards, Baker and Anderson",E-commerce,1,9,0.11882029487439827,daily,Europe,False,2017
+MERCH_084,"E-commerce_Evans, Stewart and Walton",E-commerce,1,25,0.2924909156273238,weekly,Europe,False,2016
+MERCH_085,E-commerce_Smith PLC,E-commerce,1,43,0.26369981253380836,weekly,Europe,False,2017
+MERCH_086,"E-commerce_Ferrell, Jones and Lewis",E-commerce,1,27,0.8299968078845711,weekly,Asia,False,2016
+MERCH_087,E-commerce_Anderson-Bailey,E-commerce,1,48,0.20282391201281205,weekly,Americas,False,2019
+MERCH_088,E-commerce_Suarez LLC,E-commerce,1,44,0.08449707964602345,hourly,Americas,False,2019
+MERCH_089,E-commerce_Moore-Bass,E-commerce,1,5,0.17068251891743627,weekly,Europe,False,2015
+MERCH_090,"E-commerce_Turner, Riggs and Roman",E-commerce,1,49,0.06965314375517168,hourly,Americas,False,2017
+MERCH_091,"E-commerce_Smith, Montoya and Evans",E-commerce,1,14,0.5273511498919815,weekly,Europe,False,2017
+MERCH_092,"E-commerce_Garcia, Humphrey and Baker",E-commerce,1,49,0.1328528524242662,hourly,Europe,False,2019
+MERCH_093,E-commerce_Newton and Sons,E-commerce,1,45,0.10140238788707442,weekly,Asia,False,2018
+MERCH_094,E-commerce_Campbell-Clark,E-commerce,1,29,0.09601976371890045,weekly,Europe,False,2019
+MERCH_095,E-commerce_Harris-Walters,E-commerce,1,25,0.21388355542746706,hourly,Americas,False,2018
+MERCH_096,E-commerce_Wagner-King,E-commerce,1,41,0.3146085922014412,hourly,Europe,False,2015
+MERCH_097,E-commerce_Davis Group,E-commerce,1,18,0.046592230545611395,daily,Americas,False,2017
+MERCH_098,E-commerce_Williams-Cook,E-commerce,1,20,0.19532497230219487,weekly,Europe,False,2018
+MERCH_099,E-commerce_Walsh LLC,E-commerce,1,28,0.1668761868959803,daily,Europe,False,2018
+MERCH_100,E-commerce_Figueroa PLC,E-commerce,1,40,0.01618135340101981,daily,Europe,False,2015
+MERCH_101,"E-commerce_Patterson, Smith and Jones",E-commerce,1,40,0.07999788983802995,weekly,Asia,False,2015
+MERCH_102,"E-commerce_Mckee, Gardner and Davenport",E-commerce,1,13,0.3500860975276102,daily,Europe,False,2017
+MERCH_103,"E-commerce_Tran, Jordan and Williams",E-commerce,1,10,0.07600899004221286,weekly,Asia,False,2015
+MERCH_104,E-commerce_Nolan-Flynn,E-commerce,1,6,0.03948909316891371,daily,Americas,False,2016
+MERCH_105,E-commerce_Nolan and Sons,E-commerce,1,36,0.1635862213660204,weekly,Europe,False,2016
+MERCH_106,"E-commerce_Wright, Garcia and Deleon",E-commerce,1,29,0.12068881230758831,daily,Europe,False,2018
+MERCH_107,E-commerce_Dickson-Brady,E-commerce,1,21,0.4666463036537839,daily,Asia,False,2017
+MERCH_108,E-commerce_Hancock and Sons,E-commerce,1,27,0.08628793691555849,daily,Europe,False,2017
+MERCH_109,E-commerce_Johnson-Doyle,E-commerce,1,49,0.25229655756221087,daily,Europe,False,2015
+MERCH_110,E-commerce_Patton-Jenkins,E-commerce,1,44,0.02918459811337342,daily,Asia,False,2016
+MERCH_111,"E-commerce_Shields, Cochran and Adams",E-commerce,1,7,0.48562275630051854,daily,Americas,False,2018
+MERCH_112,"E-commerce_Rodriguez, Brennan and Garrison",E-commerce,1,9,0.0770532443167745,daily,Americas,False,2016
+MERCH_113,E-commerce_Gonzalez Group,E-commerce,1,15,1.7147336993443472,daily,Europe,False,2018
+MERCH_114,E-commerce_Torres-Pope,E-commerce,1,38,0.390012880628834,daily,Asia,False,2016
+MERCH_115,E-commerce_Walker Ltd,E-commerce,1,42,0.02331310835123814,daily,Americas,False,2016
+MERCH_116,E-commerce_Ross LLC,E-commerce,1,21,0.13335797053024806,daily,Asia,False,2016
+MERCH_117,E-commerce_Rasmussen LLC,E-commerce,1,10,0.3001134916685309,daily,Europe,False,2017
+MERCH_118,E-commerce_May-Ross,E-commerce,1,47,0.11968268782809811,daily,Europe,False,2017
+MERCH_119,"E-commerce_Rivera, Johnson and Wiley",E-commerce,1,20,0.12551830747490794,daily,Europe,False,2015
+MERCH_120,E-commerce_White-Estes,E-commerce,1,7,0.14138093966035362,weekly,Asia,False,2017
+MERCH_121,E-commerce_Johnson-Carlson,E-commerce,1,23,0.3960091397167291,weekly,Europe,False,2016
+MERCH_122,E-commerce_Chandler-Edwards,E-commerce,1,26,0.03225478517484862,daily,Asia,False,2019
+MERCH_123,"E-commerce_Joyce, Wilson and Lam",E-commerce,1,31,0.11174533135854973,hourly,Americas,False,2015
+MERCH_124,E-commerce_Scott Ltd,E-commerce,1,26,0.31706586983924273,weekly,Europe,False,2016
+MERCH_125,E-commerce_Smith-Frost,E-commerce,1,32,0.07277638760068272,daily,Asia,False,2019
+MERCH_126,"E-commerce_Mcdaniel, Bentley and Mclaughlin",E-commerce,1,30,0.2408832176638732,daily,Asia,False,2019
+MERCH_127,E-commerce_Diaz Inc,E-commerce,1,22,0.1847503461659119,daily,Asia,False,2015
+MERCH_128,"E-commerce_Mccall, Hanson and Alvarado",E-commerce,1,41,0.17550661738945073,weekly,Europe,False,2018
+MERCH_129,E-commerce_Cortez LLC,E-commerce,1,29,0.037215271755050204,weekly,Asia,False,2018
+MERCH_130,"E-commerce_Parker, Ortiz and Powell",E-commerce,1,14,0.1342605933170498,hourly,Asia,False,2016
+MERCH_131,E-commerce_Spencer-Lee,E-commerce,1,12,0.5944873383200548,daily,Asia,False,2016
+MERCH_132,"E-commerce_Bentley, Byrd and Orr",E-commerce,1,45,0.2756713910332436,daily,Europe,False,2017
+MERCH_133,"E-commerce_Carroll, Sullivan and Bass",E-commerce,1,49,0.10132947454342202,daily,Americas,False,2019
+MERCH_134,E-commerce_Mitchell-Jordan,E-commerce,1,26,0.07301499789737445,daily,Americas,False,2015
+MERCH_135,"E-commerce_Lawson, Morris and Ramos",E-commerce,1,7,0.038432875934153905,daily,Asia,False,2018
+MERCH_136,"E-commerce_Lewis, Kennedy and Santana",E-commerce,1,28,0.1065705526609697,weekly,Americas,False,2015
+MERCH_137,"E-commerce_Jackson, Miller and Robertson",E-commerce,1,34,0.05460861296601825,daily,Asia,False,2015
+MERCH_138,"E-commerce_Harvey, Davis and Crane",E-commerce,1,6,1.0442725197939364,daily,Americas,False,2016
+MERCH_139,E-commerce_Chambers and Sons,E-commerce,1,8,0.683596228710892,daily,Asia,False,2015
+MERCH_140,E-commerce_Hernandez Inc,E-commerce,1,16,0.17547170076535587,daily,Asia,False,2017
+MERCH_141,E-commerce_Riggs PLC,E-commerce,1,40,0.05478621733734064,daily,Asia,False,2016
+MERCH_142,E-commerce_Gibson Ltd,E-commerce,1,14,0.9970126279456264,daily,Asia,False,2018
+MERCH_143,"E-commerce_Lee, Horton and Snyder",E-commerce,1,5,0.9841195727254517,daily,Europe,False,2015
+MERCH_144,E-commerce_Hernandez Ltd,E-commerce,1,15,1.4768010152292752,weekly,Europe,False,2019
+MERCH_145,E-commerce_Stafford Inc,E-commerce,1,48,0.07394642177131582,daily,Americas,False,2017
+MERCH_146,E-commerce_Robinson-Brock,E-commerce,1,13,0.08139788778530799,weekly,Asia,False,2018
+MERCH_147,"E-commerce_Holmes, Williams and Wright",E-commerce,1,33,0.03909187958900761,daily,Americas,False,2018
+MERCH_148,E-commerce_Bryant Group,E-commerce,1,34,0.08694910122601933,daily,Asia,False,2018
+MERCH_149,"E-commerce_Schmidt, Hansen and Stewart",E-commerce,1,29,0.21410476483685464,weekly,Europe,False,2017
+MERCH_150,E-commerce_Salazar-Ball,E-commerce,1,42,0.013215674212484154,daily,Europe,False,2016
+MERCH_151,"E-commerce_Simmons, Meadows and Griffin",E-commerce,1,18,0.6131186644754032,hourly,Europe,False,2017
+MERCH_152,E-commerce_Manning Group,E-commerce,1,10,0.15964453047542163,daily,Europe,False,2019
+MERCH_153,E-commerce_Green-Wright,E-commerce,1,37,0.2390545941978056,daily,Americas,False,2018
+MERCH_154,"E-commerce_Ramirez, Strickland and Washington",E-commerce,1,33,0.08548956993540836,daily,Asia,False,2018
+MERCH_155,E-commerce_Hill Inc,E-commerce,1,26,0.05785332391801102,weekly,Asia,False,2016
+MERCH_156,"E-commerce_Mitchell, Nelson and Flores",E-commerce,1,37,0.14764201219440168,daily,Asia,False,2018
+MERCH_157,"E-commerce_Miller, Hernandez and Reyes",E-commerce,1,19,0.052479042479866594,weekly,Europe,False,2018
+MERCH_158,E-commerce_Mccarthy Inc,E-commerce,1,16,0.5119330435908651,weekly,Asia,False,2018
+MERCH_159,E-commerce_Russell-Daniels,E-commerce,1,15,0.999317439300412,weekly,Europe,False,2016
+MERCH_160,E-commerce_Brown-Wall,E-commerce,1,47,0.1790605300355648,daily,Asia,False,2018
+MERCH_161,E-commerce_Stein-Silva,E-commerce,1,47,0.04391545163800154,weekly,Asia,False,2018
+MERCH_162,"E-commerce_Smith, Gilmore and Johnston",E-commerce,1,9,0.16810962829577028,daily,Asia,False,2016
+MERCH_163,E-commerce_Smith-Bell,E-commerce,1,13,0.2105813299994722,daily,Asia,False,2015
+MERCH_164,E-commerce_Castaneda-Ashley,E-commerce,1,26,0.0722647453894526,daily,Americas,False,2015
+MERCH_165,E-commerce_Medina-Navarro,E-commerce,1,44,0.08246434647989814,daily,Europe,False,2019
+MERCH_166,"E-commerce_Hurst, Freeman and Nelson",E-commerce,1,13,0.2506283328056815,daily,Europe,False,2018
+MERCH_167,E-commerce_Johnson-Rogers,E-commerce,1,29,0.07204872706837212,weekly,Americas,False,2016
+MERCH_168,"E-commerce_Yates, Ramsey and Pittman",E-commerce,1,31,0.09673454520742143,daily,Asia,False,2017
+MERCH_169,E-commerce_Hooper PLC,E-commerce,1,28,0.7182206287810645,daily,Europe,False,2019
+MERCH_170,E-commerce_Meadows PLC,E-commerce,1,28,0.382443688986923,daily,Europe,False,2016
+MERCH_171,"E-commerce_Alvarado, Miller and Patterson",E-commerce,1,25,0.06732551247777163,daily,Americas,False,2015
+MERCH_172,E-commerce_White-Green,E-commerce,1,24,0.06086417292910861,weekly,Asia,False,2015
+MERCH_173,E-commerce_Lewis-Murphy,E-commerce,1,36,0.11480323017843631,hourly,Asia,False,2017
+MERCH_174,E-commerce_Ramirez-Bean,E-commerce,1,23,0.08646399972713455,daily,Europe,False,2017
+MERCH_175,Gambling_King-Miller,Gambling,2,22,0.016178079435084255,daily,Asia,False,2016
+MERCH_176,Gambling_Curry Inc,Gambling,2,6,0.029168133562417535,daily,Americas,False,2018
+MERCH_177,Gambling_Walker-Jones,Gambling,2,5,2.2167290497217644,daily,Europe,False,2017
+MERCH_178,"Gambling_Williams, Johnson and Wright",Gambling,2,36,0.2262296632976357,daily,Americas,False,2018
+MERCH_179,Gambling_Howell and Sons,Gambling,2,36,0.10082522959939497,weekly,Asia,False,2015
+MERCH_180,Gambling_Wells Inc,Gambling,2,7,0.2785025855107638,hourly,Europe,False,2019
+MERCH_181,"Gambling_Gould, Marshall and Scott",Gambling,2,7,0.04375927138680158,weekly,Asia,False,2016
+MERCH_182,Gambling_Jackson-Lawson,Gambling,2,39,0.3053990209872668,weekly,Americas,False,2018
+MERCH_183,"Gambling_Higgins, Strickland and Martin",Gambling,2,41,0.05284385876921536,daily,Asia,False,2016
+MERCH_184,Gambling_Rodriguez-Johnson,Gambling,2,11,0.5289576548378612,weekly,Europe,False,2017
+MERCH_185,Gambling_Johnston-Odonnell,Gambling,2,40,0.29226906618180476,daily,Asia,False,2015
+MERCH_186,Gambling_Sanders-Espinoza,Gambling,2,9,0.03910514515722541,daily,Asia,False,2018
+MERCH_187,Gambling_Vargas Ltd,Gambling,2,24,0.05982656959723799,daily,Asia,False,2015
+MERCH_188,Gambling_Garcia LLC,Gambling,2,38,0.09376410249039144,weekly,Americas,False,2015
+MERCH_189,"Gambling_Burke, Martinez and Riggs",Gambling,2,14,0.217055248348925,daily,Americas,False,2015
+MERCH_190,Gambling_Reed Group,Gambling,2,21,0.18411435292830095,daily,Europe,False,2017
+MERCH_191,"Gambling_Wood, Hunter and Peterson",Gambling,2,8,0.024473401783505246,daily,Americas,False,2016
+MERCH_192,Gambling_Short-Garcia,Gambling,2,27,0.35000021140959975,daily,Americas,False,2015
+MERCH_193,Gambling_Reid-Poole,Gambling,2,42,0.232136993212613,hourly,Asia,False,2016
+MERCH_194,"Gambling_Hernandez, Thompson and Boyd",Gambling,2,16,0.17482491952913437,daily,Asia,False,2016
+MERCH_195,"Gambling_Nelson, Morton and Medina",Gambling,2,49,0.36156660214495207,weekly,Asia,False,2016
+MERCH_196,Gambling_Marshall-Petersen,Gambling,2,6,0.22710541647674873,hourly,Asia,False,2016
+MERCH_197,"Gambling_Adams, Christian and Rivas",Gambling,2,33,0.06549746671776893,daily,Europe,False,2018
+MERCH_198,Gambling_Ramirez Group,Gambling,2,43,0.23246906248334412,daily,Americas,False,2019
+MERCH_199,Gambling_Christensen PLC,Gambling,2,37,0.1545768624483273,daily,Asia,False,2017
+MERCH_200,"Gambling_Barnett, Rogers and Snyder",Gambling,2,39,0.17135801719806218,weekly,Europe,False,2015
+MERCH_201,Gambling_White-Lewis,Gambling,2,30,0.1707894714509984,daily,Europe,False,2015
+MERCH_202,Gambling_Peterson-Beard,Gambling,2,5,0.9753365906604405,daily,Europe,False,2017
+MERCH_203,"Gambling_Beard, Peters and Black",Gambling,2,41,0.1290875203126433,hourly,Americas,False,2016
+MERCH_204,Gambling_Miller Ltd,Gambling,2,16,0.06540626854339368,weekly,Europe,False,2016
+MERCH_205,Gambling_Freeman-Chang,Gambling,2,16,0.10566108319958922,daily,Americas,False,2019
+MERCH_206,"Gambling_Alvarez, Joseph and West",Gambling,2,21,0.48981310128128985,weekly,Europe,False,2015
+MERCH_207,Gambling_Davis and Sons,Gambling,2,16,0.39149201914439125,daily,Americas,False,2019
+MERCH_208,Gambling_Holt-Torres,Gambling,2,30,0.3068134823545731,hourly,Asia,False,2015
+MERCH_209,"Gambling_Wood, Tran and Cooper",Gambling,2,12,0.15471781869903872,weekly,Americas,False,2016
+MERCH_210,"Gambling_Pierce, Bell and Chavez",Gambling,2,35,0.13922253930853828,daily,Americas,False,2015
+MERCH_211,Gambling_King-Martinez,Gambling,2,18,0.13942285234204188,daily,Europe,False,2018
+MERCH_212,Gambling_Stewart Ltd,Gambling,2,49,0.1689983667399714,daily,Asia,False,2018
+MERCH_213,"Gambling_Tapia, Vaughn and Lee",Gambling,2,43,0.08384808564664901,daily,Asia,False,2019
+MERCH_214,"Gambling_Washington, Hardy and Bray",Gambling,2,26,0.37978291700776706,weekly,Asia,False,2016
+MERCH_215,"Gambling_Carlson, Hooper and Wall",Gambling,2,39,0.030636585701516224,weekly,Europe,False,2019
+MERCH_216,Gambling_Perez-White,Gambling,2,17,0.2568928645154821,hourly,Europe,False,2019
+MERCH_217,Gambling_Erickson and Sons,Gambling,2,33,0.11395936162985335,hourly,Asia,False,2018
+MERCH_218,Gambling_Williams-Brown,Gambling,2,14,0.10369334632619187,daily,Asia,False,2015
+MERCH_219,Gambling_Terry-Martinez,Gambling,2,7,0.06963172965752279,daily,Europe,False,2016
+MERCH_220,Gambling_Garcia-Smith,Gambling,2,8,0.2637393678514301,daily,Americas,False,2015
+MERCH_221,Gambling_Harrison-Alexander,Gambling,2,19,0.6797500110099116,daily,Asia,False,2018
+MERCH_222,Gambling_Sheppard LLC,Gambling,2,41,0.3621569485725766,weekly,Asia,False,2019
+MERCH_223,Gambling_Wilson-Jones,Gambling,2,38,0.10926394127475629,daily,Americas,False,2017
+MERCH_224,Gambling_Jones-Soto,Gambling,2,12,0.1598454621929521,daily,Asia,False,2016
+MERCH_225,Gambling_Hernandez PLC,Gambling,2,47,0.2214521508703832,daily,Europe,False,2015
+MERCH_226,Gambling_Miller-Wright,Gambling,2,7,0.21622483570389278,daily,Europe,False,2015
+MERCH_227,"Gambling_Duran, Obrien and Gibbs",Gambling,2,39,0.22496504992545827,daily,Asia,False,2017
+MERCH_228,Gambling_Rowe Group,Gambling,2,46,0.02169192138420513,weekly,Americas,False,2017
+MERCH_229,Gambling_Kerr-Evans,Gambling,2,42,3.2135353044599615,daily,Asia,False,2015
+MERCH_230,"Gambling_Branch, Torres and Oliver",Gambling,2,13,0.014326172082023601,daily,Asia,False,2017
+MERCH_231,"Gambling_Choi, Garcia and Farmer",Gambling,2,29,0.05622627036447368,weekly,Europe,False,2015
+MERCH_232,"Gambling_Clark, Guerrero and Moore",Gambling,2,9,0.054692111464215896,daily,Europe,False,2017
+MERCH_233,Gambling_Arnold and Sons,Gambling,2,9,0.35874275210505785,hourly,Asia,False,2019
+MERCH_234,Gambling_Ortiz Ltd,Gambling,2,17,0.33537524772604416,daily,Asia,False,2017
+MERCH_235,"Gambling_Harrison, Johnson and Roberts",Gambling,2,17,0.1402813191260763,daily,Americas,False,2017
+MERCH_236,Gambling_Warner-Gibson,Gambling,2,20,0.34403793299648994,weekly,Asia,False,2017
+MERCH_237,"Gambling_Hall, Baker and Moody",Gambling,2,49,0.20632244311587702,daily,Asia,False,2017
+MERCH_238,"Gambling_Guerrero, Peck and Coleman",Gambling,2,42,0.16445025120561144,weekly,Asia,False,2016
+MERCH_239,"Gambling_Walker, Hernandez and Baker",Gambling,2,14,0.11547809234121384,weekly,Europe,False,2016
+MERCH_240,Gambling_Jones and Sons,Gambling,2,40,0.648760192682787,daily,Europe,False,2019
+MERCH_241,Gambling_Larson-Holloway,Gambling,2,31,0.19073105789556855,weekly,Asia,False,2016
+MERCH_242,Gambling_Gonzales-Harrison,Gambling,2,28,0.10847914551337551,daily,Europe,False,2015
+MERCH_243,Gambling_Lyons-Bender,Gambling,2,36,0.16360846461655618,weekly,Europe,False,2019
+MERCH_244,"Gambling_Fernandez, Kim and George",Gambling,2,33,0.07764976678432287,weekly,Americas,False,2015
+MERCH_245,Gambling_Navarro-Munoz,Gambling,2,16,0.22130643711858505,hourly,Asia,False,2015
+MERCH_246,Gambling_Davis Ltd,Gambling,2,26,0.08373218329407121,weekly,Americas,False,2019
+MERCH_247,"Gambling_Matthews, Smith and Hubbard",Gambling,2,16,0.15378537728004085,weekly,Europe,False,2019
+MERCH_248,Gambling_Johnston-Hines,Gambling,2,16,0.11871395642303928,weekly,Asia,False,2016
+MERCH_249,Gambling_Ruiz Ltd,Gambling,2,38,0.017681431804655177,daily,Americas,False,2015
+MERCH_250,Gambling_Moon-White,Gambling,2,39,0.03956266619596003,weekly,Asia,False,2018
+MERCH_251,"Gambling_Graham, Olsen and Costa",Gambling,2,36,0.11329725697911043,hourly,Asia,False,2017
+MERCH_252,Gambling_Bailey-Cook,Gambling,2,31,0.021348529138918965,daily,Asia,False,2016
+MERCH_253,"Gambling_Garcia, Martin and Jenkins",Gambling,2,39,0.07679087872294804,hourly,Asia,False,2018
+MERCH_254,Gambling_Roberts-Landry,Gambling,2,22,0.12466175387991478,weekly,Europe,False,2015
+MERCH_255,"Gambling_Johnson, Miller and King",Gambling,2,33,0.4136627840235229,weekly,Americas,False,2016
+MERCH_256,Gambling_Cordova Group,Gambling,2,11,0.052635273899346295,hourly,Americas,False,2017
+MERCH_257,"Gambling_Bryan, Smith and Booth",Gambling,2,24,0.18697988456380915,weekly,Asia,False,2015
+MERCH_258,Gambling_Gutierrez-Lopez,Gambling,2,48,0.19505118548944744,daily,Europe,False,2019
+MERCH_259,Gambling_Dean-Jimenez,Gambling,2,6,0.027883418921512974,weekly,Europe,False,2019
+MERCH_260,Gambling_Wolf-Harris,Gambling,2,21,0.08609479526589532,daily,Europe,False,2019
+MERCH_261,"Gambling_Anderson, Roberts and Gilmore",Gambling,2,29,0.011987638002616046,weekly,Americas,False,2017
+MERCH_262,Gambling_Martinez-Dudley,Gambling,2,26,0.072758883971492,daily,Asia,False,2018
+MERCH_263,"Gambling_Lloyd, Mckinney and Collins",Gambling,2,24,0.2094466903976654,daily,Americas,False,2016
+MERCH_264,Gambling_Tran Inc,Gambling,2,37,0.056341794376429145,daily,Europe,False,2018
+MERCH_265,Gambling_Gay Inc,Gambling,2,30,0.14052923032455653,daily,Europe,False,2016
+MERCH_266,Gambling_Valentine-Holland,Gambling,2,19,0.08262336110362738,daily,Asia,False,2017
+MERCH_267,Gambling_Jimenez Ltd,Gambling,2,10,0.08672758138657441,daily,Asia,False,2015
+MERCH_268,Gambling_Hicks-Hill,Gambling,2,16,0.20054094299544997,weekly,Europe,False,2017
+MERCH_269,Gambling_Baird-Sanchez,Gambling,2,11,0.26752161300147714,daily,Asia,False,2016
+MERCH_270,"Gambling_Thomas, Lee and Greene",Gambling,2,26,1.0781653780334424,daily,Asia,False,2017
+MERCH_271,"Gambling_Suarez, Shields and Hill",Gambling,2,22,0.06793609343731766,hourly,Europe,False,2019
+MERCH_272,Gambling_Morgan-French,Gambling,2,29,0.09823946030913626,weekly,Europe,False,2019
+MERCH_273,Gambling_Hoover-Campbell,Gambling,2,36,0.20683496926892112,daily,Asia,False,2016
+MERCH_274,Gambling_Monroe-Carpenter,Gambling,2,23,0.14057747455957875,daily,Asia,False,2019
+MERCH_275,"Gambling_Burns, Hernandez and Ryan",Gambling,2,19,0.15259488597901033,daily,Asia,False,2019
+MERCH_276,Gambling_Cook-Hines,Gambling,2,35,0.41947673663182033,daily,Asia,False,2018
+MERCH_277,Gambling_Gibson-Morris,Gambling,2,28,0.10282286842809506,daily,Asia,False,2015
+MERCH_278,Gambling_Pollard and Sons,Gambling,2,40,0.12457455402339167,daily,Asia,False,2018
+MERCH_279,"Gambling_Reyes, Chase and Jenkins",Gambling,2,10,0.09318531051495804,daily,Americas,False,2016
+MERCH_280,Gambling_Garner-Thornton,Gambling,2,16,0.06908003817177931,weekly,Europe,False,2016
+MERCH_281,Gambling_Hughes-Alvarado,Gambling,2,12,0.013776106888001778,daily,Asia,False,2016
+MERCH_282,"Gambling_Pollard, Simpson and Johnson",Gambling,2,48,0.17044219197728,daily,Europe,False,2015
+MERCH_283,"Gambling_Sanford, Rivera and Garcia",Gambling,2,18,0.013237795140873455,daily,Europe,False,2016
+MERCH_284,Gambling_Garcia-Lozano,Gambling,2,43,0.09419003002252843,weekly,Europe,False,2019
+MERCH_285,Gambling_Bowen Group,Gambling,2,9,0.04417174734444079,daily,Americas,False,2018
+MERCH_286,"Gambling_Booker, Jones and Harrington",Gambling,2,49,0.06285321203531276,weekly,Asia,False,2016
+MERCH_287,Gambling_Morgan-Schwartz,Gambling,2,33,0.0632823213595749,daily,Americas,False,2015
+MERCH_288,"Gambling_Miller, Murphy and Craig",Gambling,2,9,0.2589615226559078,weekly,Europe,False,2018
+MERCH_289,"Gambling_James, Stewart and Higgins",Gambling,2,32,0.033641450140285876,hourly,Asia,False,2019
+MERCH_290,Gambling_Brennan-Johnson,Gambling,2,16,0.455895932053491,weekly,Asia,False,2018
+MERCH_291,Gambling_Young Ltd,Gambling,2,24,0.1237461968850125,daily,Europe,False,2019
+MERCH_292,Gambling_Bright-Francis,Gambling,2,24,0.1571078542640213,daily,Europe,False,2017
+MERCH_293,Gambling_Good-Hodges,Gambling,2,9,0.08393772317369717,daily,Asia,False,2018
+MERCH_294,"Gambling_Brennan, Wallace and Benson",Gambling,2,46,0.08366403131362314,daily,Europe,False,2015
+MERCH_295,Gambling_Williams Inc,Gambling,2,33,0.011618867126562762,weekly,Asia,False,2017
+MERCH_296,Gambling_Howard-Jordan,Gambling,2,27,0.05663467980314937,hourly,Europe,False,2016
+MERCH_297,Gambling_Schmidt PLC,Gambling,2,46,0.20258211334129608,weekly,Europe,False,2019
+MERCH_298,"Gambling_Sparks, Jackson and Miller",Gambling,2,5,0.0658227063456752,daily,Americas,False,2016
+MERCH_299,Gambling_Harvey-Allen,Gambling,2,5,0.2195648419095839,weekly,Americas,False,2016
+MERCH_300,"Services_Thomas, Murray and King",Services,3,34,1.4969288639519862,weekly,Asia,False,2018
+MERCH_301,Services_Estrada-Nolan,Services,3,31,0.1277578252931286,weekly,Asia,False,2015
+MERCH_302,Services_Santana-Byrd,Services,3,5,0.2563350815771758,daily,Asia,False,2016
+MERCH_303,Services_Jones LLC,Services,3,32,0.0431529320869783,daily,Asia,False,2015
+MERCH_304,"Services_Evans, Hayden and Vaughn",Services,3,37,0.36977616098539634,weekly,Asia,False,2015
+MERCH_305,Services_Bruce-Gonzalez,Services,3,15,0.10514866811218336,weekly,Asia,False,2018
+MERCH_306,Services_Castaneda-Rodriguez,Services,3,42,0.3333623074644759,weekly,Europe,False,2019
+MERCH_307,Services_Armstrong-Andrews,Services,3,15,0.11778874128120308,daily,Europe,False,2015
+MERCH_308,"Services_Phillips, Spence and Barrett",Services,3,25,0.0452173196746608,daily,Asia,False,2018
+MERCH_309,Services_Smith-Grimes,Services,3,33,0.0320630538349937,daily,Europe,False,2015
+MERCH_310,"Services_Beltran, Lozano and Mcgee",Services,3,39,0.699083673130009,daily,Asia,False,2017
+MERCH_311,Services_Parsons-Hall,Services,3,25,0.37150873190064226,weekly,Asia,False,2018
+MERCH_312,Services_Robinson-Lee,Services,3,33,0.04256409484762502,daily,Asia,False,2018
+MERCH_313,Services_Byrd-Le,Services,3,40,0.029223098080234253,daily,Americas,False,2016
+MERCH_314,"Services_Becker, Taylor and Davis",Services,3,48,0.2890743347680424,daily,Americas,False,2018
+MERCH_315,"Services_Lucas, Parker and Alexander",Services,3,25,0.17927961875410645,daily,Europe,False,2019
+MERCH_316,"Services_Diaz, Anderson and Browning",Services,3,8,0.0566664691461772,daily,Americas,False,2017
+MERCH_317,Services_Burgess-Thompson,Services,3,12,0.050576290722626774,daily,Asia,False,2016
+MERCH_318,Services_Buchanan LLC,Services,3,6,0.07402713489496408,daily,Europe,False,2018
+MERCH_319,"Services_Shaw, Nelson and Martin",Services,3,14,0.0276864621696195,weekly,Europe,False,2015
+MERCH_320,Services_Coffey-Phillips,Services,3,46,0.05944989538927083,weekly,Europe,False,2019
+MERCH_321,Services_Brock-Mcdonald,Services,3,46,0.11644433601800332,daily,Europe,False,2019
+MERCH_322,Services_Taylor and Sons,Services,3,26,0.5092934281013644,daily,Europe,False,2015
+MERCH_323,"Services_Ramsey, Whitney and Coffey",Services,3,46,0.2063901768490255,weekly,Europe,False,2016
+MERCH_324,"Services_Diaz, Gibbs and Smith",Services,3,31,0.06597975901591312,weekly,Asia,False,2016
+MERCH_325,"Services_Martinez, Richardson and Curry",Services,3,29,0.3311858360100798,hourly,Asia,False,2015
+MERCH_326,Services_Richards-Carson,Services,3,9,0.22863298361556983,weekly,Europe,False,2015
+MERCH_327,Services_Rodriguez-Hall,Services,3,26,0.06489982092779668,hourly,Asia,False,2018
+MERCH_328,Services_Harvey PLC,Services,3,11,0.029102012182615725,daily,Asia,False,2015
+MERCH_329,Services_Herman-Walker,Services,3,6,0.1768861850352604,daily,Asia,False,2016
+MERCH_330,Services_Reid Group,Services,3,7,0.020895939943581677,weekly,Europe,False,2018
+MERCH_331,"Services_Turner, Ortiz and Taylor",Services,3,23,0.018795506600305222,daily,Europe,False,2019
+MERCH_332,Services_Torres Group,Services,3,40,0.07564674143123631,daily,Europe,False,2018
+MERCH_333,Services_Davis PLC,Services,3,17,0.049057768284816304,daily,Europe,False,2019
+MERCH_334,Services_Price LLC,Services,3,48,0.17097907674037954,weekly,Asia,False,2018
+MERCH_335,"Services_Avery, Horton and Fernandez",Services,3,7,0.02855578757665527,daily,Europe,False,2018
+MERCH_336,"Services_Newton, Moore and Perry",Services,3,6,0.019233177914921035,daily,Europe,False,2019
+MERCH_337,Services_Bass PLC,Services,3,17,0.07215570747641774,daily,Americas,False,2016
+MERCH_338,Services_Crosby-Ramirez,Services,3,34,0.6593274526677684,daily,Asia,False,2018
+MERCH_339,"Services_Wood, Ramos and Sampson",Services,3,7,0.09958134880995109,weekly,Europe,False,2018
+MERCH_340,Services_Garcia-Jennings,Services,3,44,0.06371736010970858,daily,Europe,False,2016
+MERCH_341,"Services_Winters, Newman and Brown",Services,3,12,0.29799326656681063,weekly,Europe,False,2018
+MERCH_342,Services_Lopez-Martinez,Services,3,42,0.10118486586059926,daily,Europe,False,2016
+MERCH_343,Services_Davis-Lewis,Services,3,31,0.09001102770805733,daily,Asia,False,2017
+MERCH_344,"Services_Harper, Smith and Buchanan",Services,3,27,0.21203815659193542,daily,Asia,False,2018
+MERCH_345,Services_Zhang PLC,Services,3,46,0.07961859380154326,daily,Europe,False,2016
+MERCH_346,Services_Jones PLC,Services,3,49,0.33928204817289753,weekly,Americas,False,2018
+MERCH_347,Services_Willis and Sons,Services,3,18,0.10123866355138196,hourly,Asia,False,2016
+MERCH_348,Services_Schroeder-Kramer,Services,3,31,0.047998960893709,weekly,Asia,False,2015
+MERCH_349,"Services_Smith, Garrison and Thomas",Services,3,6,0.5031175268370077,daily,Americas,False,2018
+MERCH_350,Services_Fernandez and Sons,Services,3,35,1.5918193953544368,weekly,Europe,False,2017
+MERCH_351,Services_Guerrero Inc,Services,3,39,0.10024477995830657,daily,Europe,False,2019
+MERCH_352,Services_Smith and Sons,Services,3,38,0.22486786191132638,daily,Europe,False,2018
+MERCH_353,"Services_Morris, Thompson and Williams",Services,3,22,0.14284265323502976,daily,Americas,False,2019
+MERCH_354,"Services_Fisher, Wilson and Brown",Services,3,47,0.6254717164169789,daily,Europe,False,2017
+MERCH_355,Services_Strickland-Palmer,Services,3,38,0.4578387879061938,daily,Europe,False,2017
+MERCH_356,Services_Hayes and Sons,Services,3,35,0.07702316737160453,daily,Europe,False,2017
+MERCH_357,"Services_Williams, Logan and Camacho",Services,3,11,0.08973170142012868,daily,Europe,False,2018
+MERCH_358,"Services_Turner, Schneider and Johnson",Services,3,8,0.029179215345848587,daily,Asia,False,2016
+MERCH_359,Services_Boone-Simmons,Services,3,41,0.33703626243941937,weekly,Asia,False,2019
+MERCH_360,Services_Henry Group,Services,3,39,0.04199885067058116,weekly,Asia,False,2019
+MERCH_361,Services_Lam LLC,Services,3,6,0.022326511780512315,daily,Asia,False,2019
+MERCH_362,"Services_Hernandez, Martinez and Weber",Services,3,14,0.05011393198298368,daily,Europe,False,2016
+MERCH_363,"Services_Kelley, Nguyen and Vang",Services,3,49,0.24156884819479124,weekly,Americas,False,2019
+MERCH_364,"Services_Phillips, Wagner and Jordan",Services,3,36,0.05008136816162534,daily,Asia,False,2018
+MERCH_365,"Services_Wilson, Pena and Rich",Services,3,30,0.1312122553498765,daily,Americas,False,2018
+MERCH_366,"Services_Le, Lewis and Hayes",Services,3,22,0.013532014053245844,daily,Asia,False,2019
+MERCH_367,Services_Gutierrez Group,Services,3,46,0.08673083904405084,weekly,Americas,False,2015
+MERCH_368,Services_Perry-Davis,Services,3,13,0.11104667329668352,weekly,Europe,False,2019
+MERCH_369,Services_Edwards-Scott,Services,3,32,0.09257303856039978,daily,Asia,False,2017
+MERCH_370,Services_Mcdaniel Group,Services,3,26,0.49745075579902615,hourly,Asia,False,2017
+MERCH_371,Services_Davis Inc,Services,3,9,0.6450104225832337,weekly,Asia,False,2019
+MERCH_372,Services_Reynolds Ltd,Services,3,12,0.09391909570410902,hourly,Europe,False,2019
+MERCH_373,"Services_Watson, Anderson and Brown",Services,3,24,0.16278585838639784,weekly,Europe,False,2018
+MERCH_374,"Services_Hoffman, Santiago and Jenkins",Services,3,15,0.07346913510018757,daily,Asia,False,2016
+MERCH_375,"Services_Pugh, Henderson and Moon",Services,3,42,0.4468786822831843,hourly,Asia,False,2015
+MERCH_376,Services_Schmitt PLC,Services,3,35,0.06831719410991724,weekly,Asia,False,2017
+MERCH_377,Services_Bell-Lane,Services,3,40,0.2751424204878449,daily,Americas,False,2015
+MERCH_378,Services_Moore Group,Services,3,29,0.07551998375697463,weekly,Americas,False,2018
+MERCH_379,Services_Boone LLC,Services,3,31,0.14066022341457646,weekly,Asia,False,2019
+MERCH_380,"Services_Richardson, Farmer and Andrews",Services,3,36,0.2853043570843968,daily,Europe,False,2015
+MERCH_381,Services_Bruce-Villegas,Services,3,44,0.24498192986601972,daily,Europe,False,2017
+MERCH_382,"Services_Austin, Day and Johnson",Services,3,18,1.0578167665702523,weekly,Europe,False,2019
+MERCH_383,"Services_Gallegos, Adams and White",Services,3,48,0.04490489968851832,daily,Americas,False,2019
+MERCH_384,"Services_Farmer, Dorsey and Bell",Services,3,39,0.04025756756111489,weekly,Europe,False,2016
+MERCH_385,Services_Kane PLC,Services,3,25,0.4212558190521902,weekly,Asia,False,2018
+MERCH_386,"Services_Morales, Thomas and Schultz",Services,3,36,0.16219135432236162,weekly,Americas,False,2019
+MERCH_387,Services_Davis PLC,Services,3,17,0.03700020048067959,daily,Europe,False,2018
+MERCH_388,Services_Bennett Group,Services,3,31,0.1335359410999482,daily,Europe,False,2017
+MERCH_389,Services_Moore-Collins,Services,3,41,0.23140559916505365,daily,Asia,False,2017
+MERCH_390,Services_Frank-Bradley,Services,3,27,0.28746378873729944,daily,Americas,False,2016
+MERCH_391,Services_Ware and Sons,Services,3,20,0.19812807477197036,weekly,Asia,False,2017
+MERCH_392,Services_Webster Inc,Services,3,5,0.05752639701633144,weekly,Asia,False,2015
+MERCH_393,"Services_Miller, Ramos and Coleman",Services,3,14,0.07274135444164088,weekly,Americas,False,2017
+MERCH_394,"Services_Ramos, Nelson and Fischer",Services,3,31,0.05043440134955021,daily,Asia,False,2016
+MERCH_395,Services_Reed Inc,Services,3,30,0.598545421759156,weekly,Americas,False,2015
+MERCH_396,Services_Gregory-Watkins,Services,3,38,0.29341500982294283,weekly,Americas,False,2017
+MERCH_397,"Services_Estrada, Williams and Foster",Services,3,41,0.41568605828983146,daily,Europe,False,2018
+MERCH_398,"Services_Brown, Harris and Dougherty",Services,3,24,0.06873644970940633,daily,Asia,False,2019
+MERCH_399,Services_Duran LLC,Services,3,14,0.2649397840218778,daily,Europe,False,2015
+MERCH_400,Retail_Wilson-Jimenez,Retail,4,49,0.16220675536709894,daily,Asia,False,2019
+MERCH_401,Retail_Thompson-James,Retail,4,20,0.058673791437948354,daily,Asia,False,2016
+MERCH_402,"Retail_Hall, Hansen and Barnett",Retail,4,34,0.07245500380752462,weekly,Asia,False,2017
+MERCH_403,Retail_Jones-Hensley,Retail,4,26,0.3097003988831406,daily,Asia,False,2016
+MERCH_404,Retail_Graham Group,Retail,4,42,0.23533922123705983,daily,Europe,False,2015
+MERCH_405,Retail_Atkins PLC,Retail,4,37,0.08259881520192357,hourly,Europe,False,2017
+MERCH_406,Retail_Berry-Mckinney,Retail,4,32,0.16362923646391525,daily,Asia,False,2017
+MERCH_407,Retail_Roberts-Sullivan,Retail,4,19,0.2409316649059526,daily,Americas,False,2017
+MERCH_408,Retail_Jackson-Meza,Retail,4,43,0.8909974672879294,daily,Europe,False,2016
+MERCH_409,Retail_Collier-Gillespie,Retail,4,7,0.6333345561541863,hourly,Europe,False,2019
+MERCH_410,Retail_Kim Inc,Retail,4,10,0.020323755787132143,weekly,Europe,False,2016
+MERCH_411,Retail_Graham Group,Retail,4,9,0.16046143625484796,weekly,Europe,False,2015
+MERCH_412,"Retail_Miller, Harrell and Reese",Retail,4,25,0.042007091248089275,daily,Europe,False,2016
+MERCH_413,Retail_Cook and Sons,Retail,4,39,0.007656026118870086,daily,Asia,False,2015
+MERCH_414,Retail_Dixon Inc,Retail,4,48,0.20095173230606694,daily,Americas,False,2018
+MERCH_415,"Retail_Hicks, Bullock and Bailey",Retail,4,46,0.07627288163142185,daily,Europe,False,2017
+MERCH_416,"Retail_Mullen, Brewer and Hernandez",Retail,4,32,0.04645595619016512,weekly,Europe,False,2015
+MERCH_417,Retail_Thomas and Sons,Retail,4,49,0.019516037129624037,weekly,Europe,False,2016
+MERCH_418,Retail_Morrison Ltd,Retail,4,47,0.14981475536581879,daily,Europe,False,2016
+MERCH_419,Retail_Thompson Ltd,Retail,4,36,0.04367294869762917,daily,Americas,False,2019
+MERCH_420,Retail_Marshall-Elliott,Retail,4,46,0.22032750140508037,daily,Asia,False,2019
+MERCH_421,"Retail_Cole, Glass and Cunningham",Retail,4,22,0.23583552323666634,daily,Asia,False,2019
+MERCH_422,"Retail_Downs, Morris and Maddox",Retail,4,28,0.038018211385422496,weekly,Americas,False,2019
+MERCH_423,Retail_Hernandez-Jones,Retail,4,45,0.04626046003205365,hourly,Asia,False,2016
+MERCH_424,Retail_Welch-Hogan,Retail,4,11,0.21653529070952698,weekly,Europe,False,2018
+MERCH_425,"Retail_Brown, Romero and Collins",Retail,4,47,0.9182480719344578,hourly,Asia,False,2015
+MERCH_426,Retail_Johnson-Wood,Retail,4,38,0.1245998613938653,daily,Europe,False,2016
+MERCH_427,Retail_Jones-Lin,Retail,4,26,0.0590708965715376,weekly,Asia,False,2016
+MERCH_428,Retail_Gilbert PLC,Retail,4,20,0.794424298627323,daily,Europe,False,2018
+MERCH_429,Retail_Ford-Spencer,Retail,4,14,0.048104823418669784,weekly,Americas,False,2015
+MERCH_430,"Retail_Huang, Cole and Pacheco",Retail,4,36,0.06660113152836666,daily,Americas,False,2019
+MERCH_431,"Retail_Lopez, Jacobs and Mason",Retail,4,19,0.08123280975305382,weekly,Americas,False,2017
+MERCH_432,Retail_Hayes LLC,Retail,4,45,0.6587533890193411,daily,Asia,False,2017
+MERCH_433,"Retail_Miller, Lucas and Williams",Retail,4,12,0.19787254863877643,daily,Europe,False,2017
+MERCH_434,"Retail_Kim, Gonzales and Mills",Retail,4,10,0.060605853627399724,daily,Europe,False,2019
+MERCH_435,Retail_Cox LLC,Retail,4,15,0.01608325073408583,daily,Asia,False,2018
+MERCH_436,Retail_Ortiz-Morgan,Retail,4,32,0.06013199515101592,daily,Asia,False,2016
+MERCH_437,"Retail_Williams, Mccoy and Cook",Retail,4,46,0.34448998706342265,daily,Asia,False,2016
+MERCH_438,Retail_Davis-Gregory,Retail,4,11,0.028277979888248764,weekly,Europe,False,2015
+MERCH_439,Retail_King-York,Retail,4,32,0.49547171294621517,daily,Europe,False,2019
+MERCH_440,"Retail_Marks, Cook and Aguilar",Retail,4,36,0.05207227719888023,daily,Asia,False,2017
+MERCH_441,Retail_Rangel LLC,Retail,4,36,0.20671775172165316,daily,Asia,False,2015
+MERCH_442,"Retail_Hale, Myers and Larson",Retail,4,49,0.04677560240390707,weekly,Asia,False,2017
+MERCH_443,Retail_Collins Group,Retail,4,9,0.20769328003912496,daily,Asia,False,2015
+MERCH_444,"Retail_Conner, Li and Santiago",Retail,4,24,0.06048427730050368,weekly,Americas,False,2016
+MERCH_445,"Retail_Osborn, Gaines and Davis",Retail,4,10,0.24572121441195383,weekly,Europe,False,2017
+MERCH_446,"Retail_Henderson, Cox and Cox",Retail,4,6,0.11470415642517565,daily,Asia,False,2017
+MERCH_447,Retail_Bean LLC,Retail,4,16,0.4995587437652619,daily,Europe,False,2019
+MERCH_448,Retail_Lee-Cooke,Retail,4,32,0.0768972797930075,daily,Asia,False,2016
+MERCH_449,Retail_Jones Inc,Retail,4,15,0.0897516686934046,daily,Asia,False,2015
+MERCH_450,"Retail_Wise, Conley and Stephenson",Retail,4,9,0.20790605121258782,daily,Europe,False,2019
+MERCH_451,Retail_Stanley PLC,Retail,4,20,0.1983824427639136,daily,Europe,False,2018
+MERCH_452,Retail_Harper and Sons,Retail,4,43,0.21644023279444627,weekly,Europe,False,2017
+MERCH_453,Retail_White Ltd,Retail,4,8,0.04946148509841125,weekly,Europe,False,2019
+MERCH_454,"Retail_Lamb, Martin and Kim",Retail,4,39,0.0818272262179641,weekly,Americas,False,2015
+MERCH_455,Retail_Diaz-Ball,Retail,4,43,0.5734965635909877,weekly,Europe,False,2016
+MERCH_456,Retail_Bishop-Goodwin,Retail,4,37,0.09261261459887406,daily,Europe,False,2019
+MERCH_457,Retail_Young-Allen,Retail,4,12,0.04334049166921533,daily,Asia,False,2017
+MERCH_458,Retail_Mckee-Lee,Retail,4,24,0.12881514284422624,hourly,Americas,False,2015
+MERCH_459,"Retail_Valentine, Joyce and Murray",Retail,4,23,0.0999620710040747,weekly,Americas,False,2017
+MERCH_460,Retail_Strickland-Shaw,Retail,4,13,0.3690634124452264,daily,Asia,False,2017
+MERCH_461,Retail_Burch-Montoya,Retail,4,18,1.0584993745730087,daily,Europe,False,2018
+MERCH_462,"Retail_Taylor, Wright and Davidson",Retail,4,44,0.024718461767859207,weekly,Europe,False,2015
+MERCH_463,Retail_Spencer-Garcia,Retail,4,18,0.2295356404791997,weekly,Europe,False,2018
+MERCH_464,"Retail_Rosales, Mitchell and Hines",Retail,4,32,0.20769449821899963,daily,Americas,False,2019
+MERCH_465,Retail_Cole-Palmer,Retail,4,34,0.3325835120666232,daily,Europe,False,2016
+MERCH_466,Retail_Davis-Lozano,Retail,4,25,0.06497270802580783,weekly,Asia,False,2015
+MERCH_467,Retail_Wilkerson-Arias,Retail,4,13,0.14030500646239502,weekly,Asia,False,2015
+MERCH_468,Retail_Brown-Shaw,Retail,4,38,0.1635856809497137,daily,Asia,False,2018
+MERCH_469,Retail_Hughes Inc,Retail,4,16,0.36826447847767535,daily,Europe,False,2017
+MERCH_470,Retail_Walker-Flores,Retail,4,30,0.09546604001981163,weekly,Asia,False,2015
+MERCH_471,Retail_Combs Ltd,Retail,4,33,0.09488554547191555,daily,Asia,False,2018
+MERCH_472,Retail_Moody-Taylor,Retail,4,32,0.28007995780775524,weekly,Europe,False,2016
+MERCH_473,Retail_Lowery-Kennedy,Retail,4,31,0.06896056866821577,weekly,Asia,False,2015
+MERCH_474,Retail_Blake Group,Retail,4,22,0.08719670713166408,hourly,Europe,False,2018
+MERCH_475,Luxury_Gilbert-Bullock,Luxury,5,46,0.01487979663932563,weekly,Europe,False,2015
+MERCH_476,Luxury_Scott and Sons,Luxury,5,39,0.21267998616128891,daily,Europe,False,2019
+MERCH_477,"Luxury_Bentley, Lynch and Henderson",Luxury,5,42,0.039161533882176365,weekly,Europe,False,2017
+MERCH_478,Luxury_Young-Martinez,Luxury,5,24,0.09933979061664056,weekly,Asia,False,2016
+MERCH_479,Luxury_Barnes PLC,Luxury,5,47,0.06379015533762238,hourly,Europe,False,2019
+MERCH_480,Luxury_Brown-Copeland,Luxury,5,45,0.15445333321423912,weekly,Asia,False,2019
+MERCH_481,Luxury_Carlson-Smith,Luxury,5,15,0.5120244175817618,hourly,Asia,False,2019
+MERCH_482,"Luxury_Andrews, Higgins and Carter",Luxury,5,5,0.5948583646024562,weekly,Asia,False,2019
+MERCH_483,Luxury_Mendez and Sons,Luxury,5,16,0.06658005052752734,daily,Europe,False,2016
+MERCH_484,"Luxury_Butler, Beck and Miller",Luxury,5,43,0.30443540631908145,hourly,Americas,False,2016
+MERCH_485,Luxury_Jones-Fox,Luxury,5,6,0.23111808029595965,daily,Americas,False,2018
+MERCH_486,"Luxury_Hartman, Romero and Smith",Luxury,5,22,0.16421081540979052,daily,Americas,False,2018
+MERCH_487,Luxury_Williams-Hughes,Luxury,5,19,0.05968845388171353,weekly,Asia,False,2019
+MERCH_488,Luxury_King-Smith,Luxury,5,45,0.30391279266391585,daily,Asia,False,2017
+MERCH_489,Luxury_Cooper Ltd,Luxury,5,13,0.1836579496943517,daily,Americas,False,2018
+MERCH_490,"Luxury_Fuller, Ingram and Moss",Luxury,5,10,0.14346717785195723,daily,Europe,False,2018
+MERCH_491,Luxury_Anderson-Bell,Luxury,5,39,0.06426216679170345,daily,Europe,False,2016
+MERCH_492,Luxury_Li-Thompson,Luxury,5,41,0.15879462029116748,daily,Asia,False,2015
+MERCH_493,"Luxury_Marshall, Dominguez and Welch",Luxury,5,42,0.0484280958493099,weekly,Asia,False,2016
+MERCH_494,Luxury_Brown Group,Luxury,5,40,0.041022407722389374,daily,Americas,False,2018
+MERCH_495,Luxury_Carter Inc,Luxury,5,48,0.33930840823028396,weekly,Americas,False,2018
+MERCH_496,Luxury_Blackwell LLC,Luxury,5,48,0.11832635621570577,daily,Asia,False,2016
+MERCH_497,Luxury_Robertson-Hays,Luxury,5,40,0.30446725735057617,daily,Asia,False,2016
+MERCH_498,"Luxury_Kennedy, Johnson and Lucas",Luxury,5,32,0.04479294326000666,weekly,Europe,False,2018
+MERCH_499,Luxury_Kelly-Norman,Luxury,5,23,0.10916213441032913,hourly,Asia,False,2018

@@ -1,0 +1,232 @@
+% ============================================================================
+% AUTO-GENERATED LATEX TABLES
+% Generated: 2026-01-27T18:01:30.824998
+% ============================================================================
+
+% Table 1
+
+\begin{table}[t]
+\centering
+\caption{Main experimental results. FL-Full achieves superior accuracy with strong privacy guarantees.}
+\label{tab:main_results}
+\footnotesize
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+\textbf{Configuration} & \textbf{Privacy} & \textbf{Fwd Acc.} & \textbf{Bwd Acc.} & \textbf{F1} \\
+\midrule
+\textit{Baselines} & & & & \\
+Centralized & None & 71.00\% & 76.91\% & 0.74 \\
+\midrule
+\textit{Federated Learning} & & & & \\
+FL-NoSec & Isolation & 86.16\% & 88.39\% & 0.87 \\
+FL-ServerDP & $\varepsilon$=8.0 & 85.23\% & 87.80\% & 0.86 \\
+FL-FLAME & Byzantine & 86.06\% & 88.41\% & 0.87 \\
+\textbf{FL-Full} & \textbf{Full Stack} & \textbf{86.31\%} & \textbf{87.96\%} & \textbf{0.87} \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% Table 2
+
+\begin{table}[t]
+\centering
+\caption{Per-category backward attribution accuracy.}
+\label{tab:per_category}
+\footnotesize
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Category} & \textbf{Baseline} & \textbf{FL-Full} & \textbf{Improvement} \\
+\midrule
+E-commerce & 75.40\% & 85.14\% & +9.73\% \\
+Gambling & 84.75\% & 93.17\% & +8.42\% \\
+Services & 59.44\% & 78.22\% & +18.78\% \\
+Retail & 82.13\% & 90.13\% & +8.00\% \\
+Luxury & 83.35\% & 93.06\% & +9.71\% \\
+\midrule
+\textbf{Overall} & \textbf{76.91\%} & \textbf{87.96\%} & \textbf{+11.06\%} \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% Table 3
+
+\begin{table}[t]
+\centering
+\caption{Privacy-utility trade-off across $\varepsilon$ configurations (server-side DP).}
+\label{tab:privacy_tradeoff}
+\footnotesize
+\begin{tabular}{@{}cccc@{}}
+\toprule
+\textbf{$\varepsilon$} & \textbf{$\sigma$} & \textbf{Forward Acc.} & \textbf{Backward Acc.} \\
+\midrule
+$\infty$ (No DP) & 0.0 & 81.86\% & 88.18\% \\
+16.0 & 0.05 & 87.15\% & 88.42\% \\
+8.0 & 0.1 & 85.93\% & 87.97\% \\
+4.0 & 0.2 & 73.61\% & 75.60\% \\
+2.0 & 0.4 & 34.02\% & 22.16\% \\
+1.0 & 0.8 & 26.74\% & 9.41\% \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% Table 4
+
+\begin{table}[t]
+\centering
+\caption{Byzantine attack resilience with FLAME defense.}
+\label{tab:byzantine}
+\footnotesize
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Scenario} & \textbf{Detection Rate} & \textbf{FP Rate} & \textbf{Attackers Detected} \\
+\midrule
+0\% (Clean) & 0\% & 100\% & N/A \\
+33\% Random & 0\% & 50\% & 0/1 \\
+33\% Sign-flip & 0\% & 0\% & 0/1 \\
+66\% Colluding & 100\% & 100\% & 2/2 \\
+\midrule
+\textbf{Overall} & \textbf{50\%} & 62\% & 2/4 \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% Table 5
+
+\begin{table}[t]
+\centering
+\caption{Ablation: GCN layer depth.}
+\label{tab:ablation_layers}
+\footnotesize
+\begin{tabular}{@{}ccc@{}}
+\toprule
+\textbf{Layers} & \textbf{Forward Acc.} & \textbf{Backward Acc.} \\
+\midrule
+1 & 86.28\% & 89.14\% \\
+\textbf{2} & \textbf{89.01\%} & \textbf{90.41\%} \\
+3 & 85.73\% & 87.43\% \\
+4 & 81.38\% & 86.49\% \\
+5 & 82.26\% & 84.63\% \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% Table 6
+
+\begin{table}[t]
+\centering
+\caption{Ablation: Local epochs per round.}
+\label{tab:ablation_epochs}
+\footnotesize
+\begin{tabular}{@{}ccc@{}}
+\toprule
+\textbf{Local Epochs} & \textbf{Forward Acc.} & \textbf{Rounds to Converge} \\
+\midrule
+1 & 82.07\% & 23 \\
+\textbf{3} & \textbf{86.78\%} & \textbf{6} \\
+5 & 86.65\% & 4 \\
+7 & 85.05\% & 4 \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% Table 7
+
+\begin{table}[t]
+\centering
+\caption{Ablation: Federated label distribution.}
+\label{tab:ablation_distribution}
+\footnotesize
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Distribution} & \textbf{Forward Acc.} & \textbf{Convergence} \\
+\midrule
+100/0/0 (Naive) & 72.34\% & Diverges \\
+80/10/10 & 78.56\% & Normal \\
+\textbf{60/20/20 (Ours)} & \textbf{86.31\%} & \textbf{Fast} \\
+40/30/30 & 84.12\% & Fast \\
+33/33/33 (IID) & N/A & N/A \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% Table 8
+
+\begin{table}[t]
+\centering
+\caption{FL training convergence (selected rounds).}
+\label{tab:round_metrics_compact}
+\footnotesize
+\begin{tabular}{@{}cccccc@{}}
+\toprule
+\textbf{Round} & \textbf{Fwd Acc.} & \textbf{Bwd Acc.} & \textbf{$\mathcal{L}_0$} & \textbf{$\mathcal{L}_1$} & \textbf{$\mathcal{L}_2$} \\
+\midrule
+1 & 64.81\% & 21.50\% & 2.855 & 2.855 & 2.855 \\
+5 & 80.45\% & 75.63\% & 1.400 & 1.400 & 1.400 \\
+10 & 82.47\% & 85.49\% & 1.001 & 1.001 & 1.001 \\
+15 & 87.44\% & 87.24\% & 0.845 & 0.845 & 0.845 \\
+20 & 86.26\% & 87.55\% & 0.812 & 0.812 & 0.812 \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% Table 9
+
+\begin{table}[t]
+\centering
+\caption{Per-exchange accuracy evolution.}
+\label{tab:per_exchange_compact}
+\footnotesize
+\begin{tabular}{@{}c|cc|cc|cc@{}}
+\toprule
+& \multicolumn{2}{c|}{\textbf{Exchange 0}} & \multicolumn{2}{c|}{\textbf{Exchange 1}} & \multicolumn{2}{c}{\textbf{Exchange 2}} \\
+\textbf{Round} & Fwd & Bwd & Fwd & Bwd & Fwd & Bwd \\
+\midrule
+1 & N/A & N/A & N/A & N/A & N/A & N/A \\
+5 & N/A & N/A & N/A & N/A & N/A & N/A \\
+10 & N/A & N/A & N/A & N/A & N/A & N/A \\
+15 & N/A & N/A & N/A & N/A & N/A & N/A \\
+20 & 92.1 & 88.7 & 82.3 & 87.5 & 84.6 & 87.7 \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% Table 10
+
+\begin{table}[t]
+\centering
+\caption{Category-wise backward accuracy evolution.}
+\label{tab:category_compact}
+\footnotesize
+\begin{tabular}{@{}cccccc@{}}
+\toprule
+\textbf{Round} & \textbf{E-Comm.} & \textbf{Gambl.} & \textbf{Serv.} & \textbf{Retail} & \textbf{Luxury} \\
+\midrule
+1 & N/A & N/A & N/A & N/A & N/A \\
+5 & N/A & N/A & N/A & N/A & N/A \\
+10 & N/A & N/A & N/A & N/A & N/A \\
+15 & N/A & N/A & N/A & N/A & N/A \\
+20 & 85.1 & 93.2 & 78.2 & 90.1 & 93.1 \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+

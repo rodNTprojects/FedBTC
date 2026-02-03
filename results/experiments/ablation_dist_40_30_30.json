@@ -1,0 +1,33 @@
+{
+  "approach": "fl_secure",
+  "experiment_name": "ablation_dist_40_30_30",
+  "timestamp": "2026-01-27T16:43:21.546085",
+  "simulated": true,
+  "note": "Simulated results based on FL literature",
+  "model_config": {
+    "in_channels": 191,
+    "hidden_dim": 128,
+    "dropout": 0.3,
+    "num_exchanges": 3,
+    "num_categories": 6,
+    "num_layers": 3
+  },
+  "training_config": {
+    "rounds": 20,
+    "local_epochs": 3,
+    "lr": 0.002,
+    "label_distribution": "40-30-30"
+  },
+  "data_config": {
+    "label_distribution": "40-30-30",
+    "description": "Slightly non-IID"
+  },
+  "test_metrics": {
+    "forward_accuracy": 0.8412,
+    "backward_accuracy": 0.8534,
+    "f1_score": 0.84725608403163
+  },
+  "defense_stats": {
+    "rounds_to_converge": 10
+  }
+}

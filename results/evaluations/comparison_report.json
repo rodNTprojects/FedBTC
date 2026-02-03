@@ -1,0 +1,122 @@
+{
+  "approaches": {
+    "baseline": {
+      "forward_accuracy": 0.6994895935058594,
+      "backward_accuracy": 0.7266795635223389,
+      "per_category": {
+        "E-commerce": 0.7443365454673767,
+        "Gambling": 0.8309061527252197,
+        "Services": 0.5538036823272705,
+        "Retail": 0.7722886800765991,
+        "Luxury": 0.7348420023918152
+      },
+      "dp_enabled": false,
+      "epsilon": null,
+      "flame_enabled": false,
+      "adversarial_training": false
+    },
+    "fl_nosec": {
+      "forward_accuracy": 0.8585449457168579,
+      "backward_accuracy": 0.8874711791674296,
+      "per_category": {
+        "E-commerce": 0.8800548513730367,
+        "Gambling": 0.9507550398508707,
+        "Services": 0.774676521619161,
+        "Retail": 0.8906333645184835,
+        "Luxury": 0.9399007558822632
+      },
+      "dp_enabled": false,
+      "epsilon": null,
+      "flame_enabled": false,
+      "adversarial_training": false
+    },
+    "fl_secure": {
+      "forward_accuracy": 0.8661268552144369,
+      "backward_accuracy": 0.8775684436162313,
+      "per_category": {
+        "E-commerce": 0.8480825424194336,
+        "Gambling": 0.9366384545962015,
+        "Services": 0.7747657696406046,
+        "Retail": 0.9059788187344869,
+        "Luxury": 0.9207547704378763
+      },
+      "dp_enabled": true,
+      "epsilon": 8.0,
+      "flame_enabled": true,
+      "adversarial_training": true
+    }
+  },
+  "rankings": {},
+  "improvements": {
+    "fl_nosec": {
+      "forward_delta": 0.15905535221099854,
+      "forward_relative_pct": 22.73877319801273,
+      "backward_delta": 0.1607916156450907,
+      "backward_relative_pct": 22.126893849292596
+    },
+    "fl_secure": {
+      "forward_delta": 0.1666372617085775,
+      "forward_relative_pct": 23.822693469017516,
+      "backward_delta": 0.15088888009389245,
+      "backward_relative_pct": 20.764156262012996
+    }
+  },
+  "validity": {
+    "is_valid": true,
+    "passed_checks": 8,
+    "warnings": 0,
+    "errors": 0,
+    "error_messages": [],
+    "warning_messages": []
+  },
+  "configs": {
+    "baseline": {
+      "split_seed": 42,
+      "split_ratio": "60/20/20",
+      "feature_count": 191,
+      "hidden_dim": 128,
+      "dropout": 0.3,
+      "learning_rate": 0.002,
+      "alpha_forward": 1.0,
+      "alpha_backward": 1.5,
+      "epochs": 60,
+      "epochs_equivalent": 60,
+      "total_transactions": 203769,
+      "train_size": 122261,
+      "test_size": 40754
+    },
+    "fl_nosec": {
+      "split_seed": 42,
+      "split_ratio": "60/20/20",
+      "feature_count": 191,
+      "hidden_dim": 128,
+      "dropout": 0.3,
+      "learning_rate": 0.002,
+      "alpha_forward": 1.0,
+      "alpha_backward": 1.5,
+      "rounds": 20,
+      "local_epochs": 3,
+      "epochs_equivalent": 60,
+      "total_transactions": 203769,
+      "train_size": null,
+      "test_size": null
+    },
+    "fl_secure": {
+      "split_seed": 42,
+      "split_ratio": "60/20/20",
+      "feature_count": 191,
+      "hidden_dim": 128,
+      "dropout": 0.3,
+      "learning_rate": 0.002,
+      "alpha_forward": 1.0,
+      "alpha_backward": 1.5,
+      "rounds": 20,
+      "local_epochs": 3,
+      "epochs_equivalent": 60,
+      "total_transactions": 203769,
+      "train_size": null,
+      "test_size": null
+    }
+  },
+  "timestamp": "2026-01-27T02:54:43.886576"
+}

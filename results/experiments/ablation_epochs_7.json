@@ -1,0 +1,176 @@
+{
+  "approach": "fl_secure",
+  "experiment_name": "ablation_epochs_7",
+  "timestamp": "2026-01-27T13:58:12.613058",
+  "model_config": {
+    "in_channels": 191,
+    "hidden_dim": 128,
+    "dropout": 0.3,
+    "num_exchanges": 3,
+    "num_categories": 6,
+    "num_layers": 3
+  },
+  "training_config": {
+    "rounds": 12,
+    "local_epochs": 7,
+    "lr": 0.002,
+    "alpha_forward": 1.0,
+    "alpha_backward": 1.5,
+    "split_ratio": "60/20/20"
+  },
+  "security_config": {
+    "client_dp_enabled": false,
+    "server_dp_enabled": true,
+    "epsilon": 8.0,
+    "noise_multiplier": 0.1,
+    "flame_enabled": true,
+    "adversarial_enabled": true
+  },
+  "data_config": {
+    "split_seed": 42,
+    "split_ratio": "60/20/20",
+    "feature_count": 191,
+    "total_transactions": 203769,
+    "transactions_per_exchange": [
+      67923,
+      67923,
+      67923
+    ],
+    "train_size_per_exchange": [
+      40753,
+      40753,
+      40753
+    ],
+    "test_size_per_exchange": [
+      13585,
+      13585,
+      13585
+    ]
+  },
+  "test_metrics": {
+    "forward_accuracy": 0.8505459427833557,
+    "backward_accuracy": 0.8863150278727213,
+    "f1_score": 0.8680621693057011,
+    "per_category": {
+      "E-commerce": 0.8799992005030314,
+      "Gambling": 0.9369707703590393,
+      "Services": 0.7788532773653666,
+      "Retail": 0.9043799241383871,
+      "Luxury": 0.9300861756006876
+    },
+    "per_exchange": [
+      {
+        "exchange_id": 0,
+        "forward_accuracy": 0.8951048851013184,
+        "backward_accuracy": 0.8924679160118103,
+        "per_category": {
+          "E-commerce": 0.8754578828811646,
+          "Gambling": 0.9520000219345093,
+          "Services": 0.7952559590339661,
+          "Retail": 0.9018912315368652,
+          "Luxury": 0.932741105556488
+        }
+      },
+      {
+        "exchange_id": 1,
+        "forward_accuracy": 0.8228192925453186,
+        "backward_accuracy": 0.8802395462989807,
+        "per_category": {
+          "E-commerce": 0.8696742057800293,
+          "Gambling": 0.9230769276618958,
+          "Services": 0.7756788730621338,
+          "Retail": 0.9030023217201233,
+          "Luxury": 0.9301775097846985
+        }
+      },
+      {
+        "exchange_id": 2,
+        "forward_accuracy": 0.8337136507034302,
+        "backward_accuracy": 0.886237621307373,
+        "per_category": {
+          "E-commerce": 0.8948655128479004,
+          "Gambling": 0.9358353614807129,
+          "Services": 0.765625,
+          "Retail": 0.9082462191581726,
+          "Luxury": 0.9273399114608765
+        }
+      }
+    ]
+  },
+  "history": {
+    "rounds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "forward_accuracy": [
+      0.6730707883834839,
+      0.7937431136767069,
+      0.7563734650611877,
+      0.8633541862169901,
+      0.8672800858815511,
+      0.8495644927024841,
+      0.8814623951911926,
+      0.8864188392957052,
+      0.8420807321866354,
+      0.8380812207857767,
+      0.8770702878634135,
+      0.8572445114453634
+    ],
+    "backward_accuracy": [
+      0.5199035406112671,
+      0.7049352924029032,
+      0.8212349017461141,
+      0.8554598490397135,
+      0.8680153489112854,
+      0.8709338704744974,
+      0.8730377952257792,
+      0.8777273694674174,
+      0.8793609539667765,
+      0.8837755719820658,
+      0.8816979726155599,
+      0.8838061491648356
+    ],
+    "loss": [
+      2.5572669733138316,
+      1.6982706387837727,
+      1.2097759048144023,
+      0.9416299178486779,
+      0.8758673696290878,
+      0.8947521050771078,
+      0.7818822293054489,
+      0.7159828884260996,
+      0.7261618404161362,
+      0.6631145945617131,
+      0.6612736327307566,
+      0.6130412277721223
+    ],
+    "flame_outliers": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "defense_stats": {
+    "total_flame_outliers": 0,
+    "rounds_to_converge": 4
+  }
+}

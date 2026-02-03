@@ -1,0 +1,42 @@
+entity_id,name,type,category,geographic_region,known_since,source,threat_level,estimated_volume_btc,status
+MERCH_400,DarkMarket_Generation_400,Dark Web Market,Dark Web,Europe,2016-08-04,Law Enforcement Collaboration,HIGH,10.190738234011969,Under Investigation
+MERCH_401,DarkMarket_Call_401,Ransomware,Dark Web,Asia,2022-07-05,Academic Research,HIGH,14.281321479175444,Active
+MERCH_403,DarkMarket_Modern_403,Ransomware,Dark Web,Asia,2023-01-12,Europol,CRITICAL,108.00340286579791,Shutdown
+MERCH_404,DarkMarket_Skin_404,Dark Web Market,Dark Web,Asia,2019-09-11,Academic Research,HIGH,18.350998700920105,Shutdown
+MERCH_405,DarkMarket_Law_405,Ransomware,Dark Web,Asia,2015-05-16,Law Enforcement Collaboration,HIGH,13.882463570499047,Active
+MERCH_406,DarkMarket_Continue_406,Ransomware,Dark Web,Europe,2022-09-07,Academic Research,CRITICAL,1.1056718023119068,Under Investigation
+MERCH_407,DarkMarket_Carry_407,Dark Web Market,Dark Web,Americas,2016-05-26,Blockchain Analysis,HIGH,1.9940494639042,Shutdown
+MERCH_410,DarkMarket_Score_410,Dark Web Market,Dark Web,Asia,2022-09-26,Europol,HIGH,11.701509254700857,Under Investigation
+MERCH_411,DarkMarket_Drug_411,Dark Web Market,Dark Web,Europe,2022-10-11,Law Enforcement Collaboration,CRITICAL,1.739011413718875,Under Investigation
+MERCH_412,DarkMarket_Month_412,Illicit Exchange,Dark Web,Europe,2017-10-23,Law Enforcement Collaboration,HIGH,2.46131126761501,Under Investigation
+MERCH_413,DarkMarket_Operation_413,Dark Web Market,Dark Web,Americas,2021-11-02,FBI,HIGH,15.411771460546996,Active
+MERCH_414,DarkMarket_These_414,Ransomware,Dark Web,Asia,2022-03-16,Interpol,HIGH,28.430438304897493,Shutdown
+MERCH_416,DarkMarket_Sure_416,Illicit Exchange,Dark Web,Asia,2020-05-24,Academic Research,HIGH,1.0279419550197795,Under Investigation
+MERCH_417,DarkMarket_Health_417,Dark Web Market,Dark Web,Europe,2019-03-19,Academic Research,CRITICAL,26.57536816336455,Under Investigation
+MERCH_418,DarkMarket_Away_418,Dark Web Market,Dark Web,Asia,2022-03-24,Law Enforcement Collaboration,CRITICAL,1.5634354644324988,Shutdown
+MERCH_419,DarkMarket_Industry_419,Dark Web Market,Dark Web,Europe,2018-07-14,Interpol,HIGH,26.391261084615433,Active
+MERCH_420,DarkMarket_Training_420,Dark Web Market,Dark Web,Europe,2023-02-19,Law Enforcement Collaboration,HIGH,4.178000151879137,Shutdown
+MERCH_421,DarkMarket_Site_421,Dark Web Market,Dark Web,Americas,2015-11-17,Academic Research,HIGH,3.0499405463601343,Shutdown
+MERCH_422,DarkMarket_And_422,Scam,Dark Web,Europe,2017-08-03,Law Enforcement Collaboration,HIGH,9.220779826927593,Active
+MERCH_423,DarkMarket_Least_423,Dark Web Market,Dark Web,Europe,2023-06-20,Europol,CRITICAL,4.898164538608339,Active
+MERCH_424,DarkMarket_After_424,Dark Web Market,Dark Web,Americas,2016-02-03,Law Enforcement Collaboration,HIGH,34.813392188714836,Active
+MERCH_425,DarkMarket_Machine_425,Dark Web Market,Dark Web,Asia,2020-05-04,Blockchain Analysis,CRITICAL,0.7586626426242641,Active
+MERCH_426,DarkMarket_Will_426,Scam,Dark Web,Europe,2020-03-10,Law Enforcement Collaboration,HIGH,3.221068369667712,Active
+MERCH_427,DarkMarket_Bank_427,Scam,Dark Web,Asia,2018-08-07,Academic Research,CRITICAL,72.91322336493315,Shutdown
+MERCH_428,DarkMarket_Training_428,Illicit Exchange,Dark Web,Americas,2020-09-18,Law Enforcement Collaboration,CRITICAL,9.482402155682843,Shutdown
+MERCH_429,DarkMarket_Form_429,Dark Web Market,Dark Web,Europe,2023-10-07,Academic Research,HIGH,3.5844836033107996,Under Investigation
+MERCH_430,DarkMarket_Parent_430,Scam,Dark Web,Americas,2019-06-28,Blockchain Analysis,HIGH,6.998011632138893,Active
+MERCH_431,DarkMarket_Laugh_431,Dark Web Market,Dark Web,Europe,2016-05-10,Interpol,CRITICAL,23.31707857672202,Under Investigation
+MERCH_433,DarkMarket_Interview_433,Ransomware,Dark Web,Asia,2023-03-19,Blockchain Analysis,HIGH,7.5812405498354485,Shutdown
+MERCH_434,DarkMarket_Security_434,Ransomware,Dark Web,Europe,2021-11-10,Europol,HIGH,15.888607629477079,Under Investigation
+MERCH_436,DarkMarket_Key_436,Ransomware,Dark Web,Americas,2017-09-20,Blockchain Analysis,CRITICAL,3.182814632308613,Shutdown
+MERCH_437,DarkMarket_Figure_437,Dark Web Market,Dark Web,Europe,2015-10-03,Academic Research,HIGH,13.362673916194707,Under Investigation
+MERCH_438,DarkMarket_Building_438,Scam,Dark Web,Asia,2016-11-25,Europol,CRITICAL,14.418814071603272,Under Investigation
+MERCH_439,DarkMarket_Interview_439,Money Laundering Service,Dark Web,Americas,2016-10-15,Law Enforcement Collaboration,CRITICAL,2.3073460383863766,Shutdown
+MERCH_440,DarkMarket_Against_440,Illicit Exchange,Dark Web,Asia,2018-01-04,Academic Research,CRITICAL,2.8023413881924957,Shutdown
+MERCH_442,DarkMarket_Congress_442,Scam,Dark Web,Americas,2018-02-04,Blockchain Analysis,CRITICAL,43.76522882272744,Under Investigation
+MERCH_443,DarkMarket_Suddenly_443,Ransomware,Dark Web,Europe,2021-09-25,Law Enforcement Collaboration,HIGH,7.247316070467472,Under Investigation
+MERCH_444,DarkMarket_Yourself_444,Ransomware,Dark Web,Europe,2015-12-05,Europol,CRITICAL,8.232292700908555,Shutdown
+MERCH_445,DarkMarket_Prepare_445,Dark Web Market,Dark Web,Europe,2017-04-25,Europol,HIGH,1.4397348637530893,Active
+MERCH_446,DarkMarket_Magazine_446,Scam,Dark Web,Asia,2023-10-12,Europol,HIGH,15.871485658777083,Active
+MERCH_449,DarkMarket_Wide_449,Dark Web Market,Dark Web,Europe,2022-10-22,Interpol,HIGH,2.391376959649044,Active

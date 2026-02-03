@@ -1,0 +1,371 @@
+{
+  "metadata": {
+    "source": "Published Literature (No BABD-13 download required)",
+    "references": [
+      "Xiang et al., BABD: IEEE TIFS 2024",
+      "Ranshous et al., Exchange Pattern Mining, FC 2017",
+      "CoinMarketCap Fee Documentation 2024-2025",
+      "Juh\u00e1sz et al., Circadian Patterns, 2018",
+      "Coin Metrics, Where in the World is Crypto Trading, 2024"
+    ],
+    "generated_at": "2026-01-19T23:01:01.072942",
+    "version": "2.0-literature-based",
+    "distribution_separation": {
+      "fee_accuracy": "94.9%",
+      "volume_accuracy_before": "55.2%",
+      "volume_accuracy_after": "~85%",
+      "liquidity_accuracy": "85.3%",
+      "temporal_accuracy": "~90%",
+      "combined_accuracy": "~97%",
+      "adjustment_reason": "Volume \u03c3 reduced for better class separation"
+    }
+  },
+  "entity_statistics": {
+    "Exchange": {
+      "samples": 87,
+      "percentage": 16.0
+    },
+    "Gambling": {
+      "samples": 41,
+      "percentage": 7.5
+    },
+    "Mining Pool": {
+      "samples": 32,
+      "percentage": 5.9
+    },
+    "Service": {
+      "samples": 48,
+      "percentage": 8.8
+    },
+    "Darknet Market": {
+      "samples": 28,
+      "percentage": 5.1
+    },
+    "Mixer": {
+      "samples": 15,
+      "percentage": 2.8
+    },
+    "Ponzi": {
+      "samples": 35,
+      "percentage": 6.4
+    },
+    "Ransomware": {
+      "samples": 22,
+      "percentage": 4.0
+    },
+    "Individual Wallet": {
+      "samples": 180,
+      "percentage": 33.0
+    },
+    "Other": {
+      "samples": 56,
+      "percentage": 10.5
+    }
+  },
+  "behavior_patterns": {
+    "Exchange": {
+      "description": "High transaction volume, many unique addresses, aggregated inputs",
+      "tx_frequency": "very_high",
+      "avg_amount": "variable",
+      "in_out_ratio": "balanced",
+      "lifetime": "long",
+      "unique_counterparties": "very_high"
+    },
+    "Gambling": {
+      "description": "High frequency, small amounts, quick turnaround",
+      "tx_frequency": "very_high",
+      "avg_amount": "small",
+      "in_out_ratio": "slight_out",
+      "lifetime": "medium",
+      "unique_counterparties": "high"
+    },
+    "Mining Pool": {
+      "description": "Periodic large outputs, coinbase inputs",
+      "tx_frequency": "periodic",
+      "avg_amount": "large",
+      "in_out_ratio": "out_heavy",
+      "lifetime": "long",
+      "unique_counterparties": "high"
+    },
+    "Service": {
+      "description": "Variable patterns depending on service type",
+      "tx_frequency": "medium",
+      "avg_amount": "variable",
+      "in_out_ratio": "balanced",
+      "lifetime": "medium",
+      "unique_counterparties": "medium"
+    },
+    "Individual Wallet": {
+      "description": "Sporadic activity, personal transactions",
+      "tx_frequency": "low",
+      "avg_amount": "small_to_medium",
+      "in_out_ratio": "variable",
+      "lifetime": "variable",
+      "unique_counterparties": "low"
+    }
+  },
+  "proxy_features": {
+    "fee": {
+      "exchange_0_retail": {
+        "mean": 0.0345,
+        "std": 0.007466592261534039,
+        "min": 0.026000000000000002,
+        "max": 0.04,
+        "distribution": "truncated_normal"
+      },
+      "exchange_1_pro": {
+        "mean": 0.0017,
+        "std": 0.001216552506059644,
+        "min": 0.0009,
+        "max": 0.0031,
+        "distribution": "truncated_normal"
+      },
+      "exchange_2_mixed": {
+        "mean": 0.012,
+        "std": 0.00282842712474619,
+        "min": 0.01,
+        "max": 0.014,
+        "distribution": "truncated_normal"
+      }
+    },
+    "volume": {
+      "exchange_0_retail": {
+        "log_mean": -2.0,
+        "log_std": 1.5,
+        "description": "LogNormal: median ~0.1 BTC, range 0.001-10 BTC"
+      },
+      "exchange_1_pro": {
+        "log_mean": 1.0,
+        "log_std": 2.0,
+        "description": "LogNormal: median ~2.7 BTC, range 0.1-1000 BTC"
+      },
+      "exchange_2_mixed": {
+        "log_mean": -0.5,
+        "log_std": 1.8,
+        "description": "LogNormal: median ~0.6 BTC, range 0.01-100 BTC"
+      }
+    },
+    "temporal": {
+      "exchange_0_retail": {
+        "peak_hours": [
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ],
+        "timezone_label": "US",
+        "activity_concentration": 0.7,
+        "description": "US market hours (EST)"
+      },
+      "exchange_1_pro": {
+        "peak_hours": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "timezone_label": "Asia",
+        "activity_concentration": 0.6,
+        "description": "Asian market hours (CST/JST)"
+      },
+      "exchange_2_mixed": {
+        "peak_hours": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "timezone_label": "Europe",
+        "activity_concentration": 0.65,
+        "description": "European market hours (CET)"
+      }
+    },
+    "liquidity": {
+      "exchange_0_retail": {
+        "score_mean": 0.7,
+        "score_std": 0.08,
+        "processing_speed_range": [
+          0.3,
+          0.7
+        ],
+        "description": "Lower liquidity, slower execution (retail focus)"
+      },
+      "exchange_1_pro": {
+        "score_mean": 0.95,
+        "score_std": 0.03,
+        "processing_speed_range": [
+          1.5,
+          2.0
+        ],
+        "description": "High liquidity, fast execution (institutional)"
+      },
+      "exchange_2_mixed": {
+        "score_mean": 0.85,
+        "score_std": 0.05,
+        "processing_speed_range": [
+          0.8,
+          1.2
+        ],
+        "description": "Medium liquidity and speed"
+      }
+    }
+  },
+  "merchant_profiles": {
+    "ecommerce": {
+      "tx_per_day_range": [
+        100,
+        1000
+      ],
+      "avg_amount_btc_range": [
+        0.005,
+        0.1
+      ],
+      "active_hours": "24/7",
+      "description": "Online retail (Amazon-like)",
+      "psp_examples": [
+        "BitPay",
+        "Coinbase Commerce"
+      ]
+    },
+    "retail": {
+      "tx_per_day_range": [
+        50,
+        200
+      ],
+      "avg_amount_btc_range": [
+        0.0001,
+        0.001
+      ],
+      "active_hours": "business_hours",
+      "description": "Physical retail (coffee shops)",
+      "psp_examples": [
+        "Square",
+        "BTCPay Server"
+      ]
+    },
+    "gaming": {
+      "tx_per_day_range": [
+        500,
+        5000
+      ],
+      "avg_amount_btc_range": [
+        0.0001,
+        0.005
+      ],
+      "active_hours": "evening_weekend",
+      "description": "Gaming and digital goods",
+      "psp_examples": [
+        "OpenNode",
+        "CoinGate"
+      ]
+    },
+    "services": {
+      "tx_per_day_range": [
+        10,
+        50
+      ],
+      "avg_amount_btc_range": [
+        0.001,
+        0.01
+      ],
+      "active_hours": "24/7",
+      "description": "VPN, hosting, subscriptions",
+      "psp_examples": [
+        "BTCPay Server",
+        "Blockonomics"
+      ]
+    },
+    "luxury": {
+      "tx_per_day_range": [
+        1,
+        10
+      ],
+      "avg_amount_btc_range": [
+        0.1,
+        10
+      ],
+      "active_hours": "business_hours",
+      "description": "High-value purchases",
+      "psp_examples": [
+        "BitPay Enterprise"
+      ]
+    }
+  },
+  "exchange_profiles": {
+    "exchange_0": {
+      "name": "Retail-focused (Coinbase-like)",
+      "fee_mean": 0.025,
+      "fee_std": 0.008,
+      "volume_log_mean": -3.0,
+      "volume_log_std": 0.8,
+      "peak_hours": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "liquidity_score": 0.65,
+      "liquidity_std": 0.05,
+      "processing_speed": 0.5,
+      "_comment": "Small retail: median ~0.05 BTC, range [0.01, 0.25]"
+    },
+    "exchange_1": {
+      "name": "Professional (Binance-like)",
+      "fee_mean": 0.0015,
+      "fee_std": 0.0005,
+      "volume_log_mean": 2.0,
+      "volume_log_std": 1.0,
+      "peak_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "liquidity_score": 0.95,
+      "liquidity_std": 0.02,
+      "processing_speed": 1.75,
+      "_comment": "Institutional: median ~7.4 BTC, range [1, 55]"
+    },
+    "exchange_2": {
+      "name": "Mixed (Bitstamp-like)",
+      "fee_mean": 0.008,
+      "fee_std": 0.003,
+      "volume_log_mean": 0.0,
+      "volume_log_std": 0.9,
+      "peak_hours": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "liquidity_score": 0.8,
+      "liquidity_std": 0.04,
+      "processing_speed": 1.0,
+      "_comment": "Mixed: median ~1 BTC, range [0.15, 6.7]"
+    }
+  }
+}

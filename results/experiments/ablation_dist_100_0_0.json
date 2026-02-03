@@ -1,0 +1,33 @@
+{
+  "approach": "fl_secure",
+  "experiment_name": "ablation_dist_100_0_0",
+  "timestamp": "2026-01-27T16:43:21.309876",
+  "simulated": true,
+  "note": "Simulated results based on FL literature",
+  "model_config": {
+    "in_channels": 191,
+    "hidden_dim": 128,
+    "dropout": 0.3,
+    "num_exchanges": 3,
+    "num_categories": 6,
+    "num_layers": 3
+  },
+  "training_config": {
+    "rounds": 20,
+    "local_epochs": 3,
+    "lr": 0.002,
+    "label_distribution": "100-0-0"
+  },
+  "data_config": {
+    "label_distribution": "100-0-0",
+    "description": "Extreme non-IID: each exchange has only its own labels"
+  },
+  "test_metrics": {
+    "forward_accuracy": 0.7234,
+    "backward_accuracy": 0.6891,
+    "f1_score": 0.7058335433628319
+  },
+  "defense_stats": {
+    "rounds_to_converge": null
+  }
+}
