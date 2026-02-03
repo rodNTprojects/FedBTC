@@ -543,16 +543,6 @@ python generate_latex_tables.py --output my_tables.tex
 python generate_latex_tables.py --tables 1 2 3
 ```
 
-### Experiments summary
-
-| Experiment | Paper Table | Runs | Est. Time |
-|------------|-------------|------|-----------|
-| `main_comparison` | Tables 1 & 2 | 5 | ~42 min |
-| `privacy_tradeoff` | Table 3 | 6 | ~48 min |
-| `byzantine_attack` | Table 4 | 1 | ~15 min |
-| `ablation_layers` | Table 5 | 5 | ~40 min |
-| `ablation_epochs` | Table 6 | 4 | ~30 min |
-| **Total** | | **21** | **~3 hours** |
 
 ### Flexible FL script parameters
 
@@ -709,5 +699,6 @@ If `babd.zip` is too large or unavailable, the pipeline uses `config/calibration
 ---
 
 ## License
+
 
 This project is developed for academic research purposes. Please contact the authors before any commercial use.
