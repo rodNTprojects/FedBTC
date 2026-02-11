@@ -274,7 +274,6 @@ python scripts/preprocessing/calibrate_from_babd13.py  # Generate calibration_pa
 ## Pipeline Overview
 
 The project follows a sequential pipeline. Each phase depends on the outputs of the previous one.
-
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
 │                         FedBTC PIPELINE                              │
@@ -282,7 +281,7 @@ The project follows a sequential pipeline. Each phase depends on the outputs of 
 │                                                                      │
 │  PHASE 1: Data Preparation (p1_data_preparation.py)                  │
 │  ├── Step 0: BABD-13 calibration → calibration_params.json          │
-│  ├── Step 1: Preprocess Elliptic (203K tx, 166 features)            │
+│  ├── Step 1: Preprocess Elliptic (203,769 tx, 165 features)         │
 │  ├── Step 2: Build temporal graph (49 timesteps)                    │
 │  ├── Step 3: Simulate 500 merchants (5 categories)                  │
 │  ├── Step 4: BFS k-hop expansion from merchant seeds               │
@@ -290,69 +289,92 @@ The project follows a sequential pipeline. Each phase depends on the outputs of 
 │  ├── Step 6: Create criminal entity database                       │
 │  ├── Step 7: Split merchants 90% known / 10% unknown               │
 │  ├── Step 8: Partition data for K=3 federated exchanges             │
-│  └── Step 9: Add 20 calibrated proxy features                      │
+│  └── Step 9: Add 25 calibrated proxy features                      │
 │      OUTPUT → data/federated_enriched/exchange_{0,1,2}_enriched.pkl │
 │                                                                      │
-│  PHASE 2: Baseline Training (p2_train_baseline.py)                   │
-│  ├── Train centralized dual-attribution GNN                         │
+│  PHASE 2: Baseline Training (p2_train_baseline_2layers.py)           │
+│  ├── Train centralized dual-attribution GNN (2 GCN layers)          │
+│  ├── 60 epochs, early stopping patience=20                          │
 │  └── OUTPUT → results/models/baseline_dual_attribution.pt           │
+│               results/evaluations/baseline_results.json              │
+│      RESULTS → Forward: 79.53%, Backward: 80.76%                     │
 │                                                                      │
 │  PHASE 3: Federated Learning                                         │
-│  ├── Option A: p3_train_federated.py (simple FedAvg)                │
-│  └── Option B: p3_train_federated_secure.py (DP+FLAME+Adversarial) │
-│      OUTPUT → results/models/federated_dual_attribution.pt          │
+│  ├── Option A: p3_train_federated_2layers.py (FedAvg, no security)  │
+│  │   └── RESULTS → Forward: 88.66%, Backward: 90.81%                │
+│  └── Option B: p3_train_federated_secure_2layers.py (DP+FLAME+Adv) │
+│      └── RESULTS → Forward: 88.82%, Backward: 90.26% (ε=8.0)        │
+│      OUTPUT → results/models/federated_secure_dual_attribution.pt   │
+│               results/evaluations/federated_secure_results.json      │
 │                                                                      │
-│  PHASE 5: Security Evaluation (p5_security_evaluation.py)            │
-│  ├── Membership Inference Attack (MIA)                              │
+│  PHASE 5: Security Evaluation (p5_security_evaluation_2layers.py)    │
 │  ├── Byzantine Attack Simulation (FLAME)                            │
 │  ├── Adversarial Robustness (PGD)                                   │
-│  └── Confidence Calibration                                         │
+│  └── Defense Statistics                                             │
 │      OUTPUT → results/evaluations/security_evaluation_report.json   │
 │                                                                      │
 │  EXPERIMENTS: Ablation studies & LaTeX table generation               │
-│  └── experiments/run_all_experiments.py                              │
-│      OUTPUT → results/experiments/evaluation_tables.tex             │
+│  └── experiments/run_all_experiments_2layers.py                      │
+│      OUTPUT → results/evaluations/evaluation_tables.tex             │
 │                                                                      │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
-### Feature Engineering (20 Proxy Features)
+### Feature Engineering (25 Proxy Features)
 
-Since Elliptic's 166 features are anonymized and lack exchange-discriminating power, we add 20 scientifically calibrated proxy features:
+Since Elliptic's 166 features are anonymized and lack exchange-discriminating power, we add 25 scientifically calibrated proxy features:
 
 | Category | Features (count) | Calibration Source |
 |----------|------------------|--------------------|
-| Fee structure | fee_percentage, fee_tier, ... (5) | BABD-13 + CoinMarketCap 2024 |
-| Volume patterns | volume_scale, volume_class, ... (5) | BABD-13 + Zhou 2023 |
-| Temporal/hour | synthetic_hour, timezone_proxy, ... (6) | Juhász et al. 2018 |
-| Liquidity | liquidity_score, processing_speed, ... (4) | BABD-13 + Kaiko Benchmark |
+| Fee structure | fee_percentage, fee_tier, ... (6) | BABD-13 + CoinMarketCap 2024 |
+| Volume patterns | volume_scale, volume_class, ... (6) | BABD-13 + Zhou 2023 |
+| Temporal/hour | synthetic_hour, timezone_proxy, ... (7) | Juhász et al. 2018 |
+| Liquidity | liquidity_score, processing_speed, ... (6) | BABD-13 + Kaiko Benchmark |
 
-Total feature dimension: **186** (166 original + 20 proxy).
+Total feature dimension: **191** (166 original + 25 proxy).
 
 ### Model Architecture
-
 ```
-Input (186 features)
+Input (191 features)
     │
-    ├── GCN Layer 1 (186 → 128) + BatchNorm + ReLU + Dropout(0.3)
+    ├── GCN Layer 1 (191 → 128) + BatchNorm + ReLU + Dropout(0.3)
     ├── GCN Layer 2 (128 → 128) + BatchNorm + ReLU + Dropout(0.3)
     │
-    ├── Forward Head: Linear(128→64) → BN → ReLU → Linear(64→3)   [Exchange classification]
-    └── Backward Head: Linear(128→64) → BN → ReLU → Linear(64→6)  [Merchant category]
+    ├── Forward Head: Linear(128→64) → BN → ReLU → Linear(64→3)   [Exchange: 3 classes]
+    └── Backward Head: Linear(128→64) → BN → ReLU → Linear(64→6)  [Merchant: 6 categories]
 
 Loss = α_fwd × CrossEntropy_fwd  +  α_bwd × FocalLoss_bwd
-       (α_fwd=1.0, α_bwd=1.5)
+       (α_fwd=1.0, α_bwd=1.5, γ=2.0)
 ```
+
+### Training Configuration
+
+| Parameter | Baseline | FL-NoSec | FL-Secure |
+|-----------|----------|----------|-----------|
+| Epochs/Rounds | 60 epochs | 20 rounds × 3 local epochs | 20 rounds × 3 local epochs |
+| Learning rate | 0.002 | 0.002 | 0.002 |
+| Optimizer | Adam | Adam | Adam |
+| Batch size | Full graph | Full graph | Full graph |
 
 ### Security Stack
 
-| Layer | Technique | Purpose | Reference |
-|-------|-----------|---------|-----------|
-| Privacy | Server-side DP (ε=8.0, σ=0.1) | Protect membership | McMahan et al. 2018 |
-| Byzantine | FLAME (DBSCAN clustering) | Detect malicious updates | Nguyen et al. 2022 |
-| Robustness | PGD adversarial training (15%) | Evasion resistance | Madry et al. 2018 |
+| Layer | Technique | Configuration | Purpose |
+|-------|-----------|---------------|---------|
+| Privacy | Server-side DP | ε=8.0, δ=10⁻⁵, σ=0.1 | Protect against gradient inversion |
+| Byzantine | FLAME | DBSCAN clustering, PCA(d=50) | Detect malicious updates |
+| Robustness | PGD adversarial | ε_adv=0.1, 5 steps, 30% ratio | Evasion resistance |
 
-Server-side DP applies noise once per round (T=20 total) instead of client-side DP-SGD which applies noise K×E×T=180 times, preserving model utility (<1% accuracy degradation vs >40% for client-side).
+Server-side DP applies noise once per round (T=20 total) instead of client-side DP-SGD which applies noise K×E×T=180 times, preserving model utility (<1% accuracy degradation vs model divergence for ε=2.0).
+
+### Key Results Summary
+
+| Configuration | Forward Acc. | Backward Acc. | F1 Score | Privacy |
+|---------------|-------------|---------------|----------|---------|
+| Centralized Baseline | 79.53% | 80.76% | 0.801 | None |
+| FL-NoSec | 88.66% | 90.81% | 0.897 | Isolation |
+| **FL-Secure** | **88.82%** | **90.26%** | **0.895** | **ε=8.0** |
+
+**Key insight**: FL-Secure outperforms the centralized baseline by +9.29% (forward) and +9.50% (backward) while providing formal differential privacy guarantees.
 
 ---
 
@@ -700,6 +722,7 @@ If `babd.zip` is too large or unavailable, the pipeline uses `config/calibration
 
 
 This project is developed for academic research purposes. Please contact the authors before any commercial use.
+
 
 
 
