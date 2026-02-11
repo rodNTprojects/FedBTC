@@ -31,7 +31,6 @@
 Cryptocurrency exchanges hold fragmented views of the Bitcoin transaction graph. Due to GDPR and privacy regulations, they cannot share customer KYC data to trace illicit flows across platforms. **FedBTC** solves this with a federated learning approach where K=3 simulated exchanges collaboratively train a Graph Neural Network (GNN) model while keeping their data local.
 
 The system performs **dual attribution**:
-
 - **Forward attribution**: Given a suspicious transaction, predict which exchange will ultimately receive the funds (3-class classification among Exchange 0, 1, 2).
 - **Backward attribution**: Identify the category of criminal merchant that originated the transaction (6-class: No Merchant, E-commerce, Gambling, Services, Retail, Luxury).
 
@@ -43,12 +42,11 @@ The security stack includes server-side differential privacy (ε=8.0, δ=10⁻�
 
 | Configuration | Forward Acc. | Backward Acc. | Privacy |
 |---------------|-------------|---------------|---------|
-| Centralized Baseline | 71.00% | 76.91% | None |
-| FL (No Security) | 85.80% | 88.66% | Data isolation only |
-| FL + Adversarial + FLAME | 85.10% | 88.68% | Byzantine defense |
-| **FL Secure (Full)** | **86.31%** | **87.96%** | **ε=8.0** |
+| Centralized Baseline | 79.53% | 80.76% | None |
+| FL-NoSec | 88.66% | 90.81% | Data isolation only |
+| **FL-Secure (Full)** | **88.82%** | **90.26%** | **ε=8.0** |
 
-FL outperforms the centralized baseline by +15.31% (forward) and +11.05% (backward). This counterintuitive result stems from the 60/20/20 label distribution across clients acting as implicit data augmentation — each client sees diverse cross-exchange labels during training, improving generalization.
+FL-Secure outperforms the centralized baseline by **+9.29%** (forward) and **+9.50%** (backward). This counterintuitive result stems from the 60/20/20 label distribution across clients acting as implicit data augmentation—each client sees diverse cross-exchange labels during training, improving generalization. Server-side differential privacy introduces less than 1% accuracy degradation compared to FL-NoSec, demonstrating that privacy and utility can be complementary.
 
 ---
 
@@ -708,5 +706,6 @@ If `babd.zip` is too large or unavailable, the pipeline uses `config/calibration
 
 
 This project is developed for academic research purposes. Please contact the authors before any commercial use.
+
 
 
