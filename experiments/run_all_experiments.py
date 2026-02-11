@@ -1,24 +1,32 @@
 #!/usr/bin/env python3
 """
 ================================================================================
-Script: run_all_experiments.py
+Script: run_all_experiments_2layers.py
 Description: Orchestrateur pour exécuter toutes les expériences et générer les
              tableaux pour l'article USENIX Security
 
+ARCHITECTURE: 2 GCN Layers (optimal per ablation study - +3.28% forward accuracy)
+FAIR COMPARISON: Baseline 60 epochs = FL 20 rounds × 3 local epochs
+
+SCRIPTS UTILISÉS (tous à la racine du projet):
+  - p2_train_baseline_2layers.py        (Baseline centralisé, 2 GCN layers)
+  - p3_train_federated_2layers.py       (FL sans sécurité, 2 GCN layers)
+  - p3_train_federated_secure_2layers.py (FL avec DP+FLAME, 2 GCN layers)
+  - p5_security_evaluation_2layers.py   (Évaluation sécurité, 2 GCN layers)
+
 EXPÉRIENCES:
-  1. main_comparison   - Table 1 & 2: Baseline vs FL-NoSec vs FL-Full
+  1. main_comparison   - Table 1 & 2: Baseline vs FL-NoSec vs FL-Secure
   2. privacy_tradeoff  - Table 3: Privacy-utility trade-off (ε values)
-  3. byzantine_attack  - Table 4: Byzantine resilience (via p5_security_evaluation.py)
-  4. ablation_layers   - Table 5: GCN layer depth
+  3. byzantine_attack  - Table 4: Byzantine resilience
+  4. ablation_layers   - Table 5: GCN layer depth (1-5 layers)
   5. ablation_epochs   - Table 6: Local epochs per round
-  6. ablation_dist     - Table 7: Label distribution
 
 USAGE:
-    python run_all_experiments.py                    # Tout exécuter
-    python run_all_experiments.py --only main_comparison
-    python run_all_experiments.py --only privacy_tradeoff
-    python run_all_experiments.py --skip byzantine_attack
-    python run_all_experiments.py --generate-tables  # Générer tableaux seulement
+    python run_all_experiments_2layers.py                    # Tout exécuter
+    python run_all_experiments_2layers.py --only main_comparison
+    python run_all_experiments_2layers.py --skip byzantine_attack
+    python run_all_experiments_2layers.py --dry-run          # Voir sans exécuter
+    python run_all_experiments_2layers.py --list             # Lister les expériences
 ================================================================================
 """
 
@@ -28,7 +36,7 @@ import subprocess
 import argparse
 import json
 import time
-from datetime import datetime, timedelta
+from datetime import datetime
 from typing import List, Dict, Optional
 
 
@@ -36,17 +44,23 @@ from typing import List, Dict, Optional
 # CONFIGURATION
 # ============================================================================
 
-SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_DIR = os.path.dirname(SCRIPTS_DIR)
+SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))  # experiments/
+PROJECT_DIR = os.path.dirname(SCRIPTS_DIR)                 # bitcoin_fl_project/
 RESULTS_DIR = os.path.join(PROJECT_DIR, 'results', 'experiments')
 
 # Créer répertoires
 os.makedirs(RESULTS_DIR, exist_ok=True)
 
-# Chemins des scripts
+# ============================================================================
+# CHEMINS DES SCRIPTS (tous à la racine du projet, version 2 layers)
+# ============================================================================
+BASELINE_SCRIPT = os.path.join(PROJECT_DIR, 'p2_train_baseline_2layers.py')
+FL_NOSEC_SCRIPT = os.path.join(PROJECT_DIR, 'p3_train_federated_2layers.py')
+FL_SECURE_SCRIPT = os.path.join(PROJECT_DIR, 'p3_train_federated_secure_2layers.py')
+SECURITY_EVAL_SCRIPT = os.path.join(PROJECT_DIR, 'p5_security_evaluation_2layers.py')
+
+# Pour ablation layers, on utilise le script flexible s'il existe
 FL_FLEXIBLE_SCRIPT = os.path.join(SCRIPTS_DIR, 'scripts', 'p3_train_federated_flexible.py')
-BASELINE_SCRIPT = os.path.join(PROJECT_DIR, 'p2_train_baseline.py')
-SECURITY_EVAL_SCRIPT = os.path.join(PROJECT_DIR, 'p5_security_evaluation.py')
 
 
 # ============================================================================
@@ -55,87 +69,73 @@ SECURITY_EVAL_SCRIPT = os.path.join(PROJECT_DIR, 'p5_security_evaluation.py')
 
 EXPERIMENTS = {
     # ==========================================================================
-    # Table 1 & 2: Main Comparison
+    # Table 1 & 2: Main Comparison (2-layer architecture, 60 epoch-equivalent)
     # ==========================================================================
     'main_comparison': {
-        'description': 'Compare Baseline, FL-NoSec, FL configurations',
+        'description': 'Compare Baseline vs FL-NoSec vs FL-Secure (all 2 GCN layers)',
         'runs': [
             {
                 'name': 'baseline',
                 'script': 'baseline',
-                'args': ['--epochs', '150'],
+                'args': ['--epochs', '60'],
                 'estimated_time': 10
             },
             {
                 'name': 'fl_nosec',
-                'script': 'fl_flexible',
-                'args': ['--no-server-dp', '--no-flame', '--no-adversarial',
-                        '--experiment_name', 'fl_nosec'],
+                'script': 'fl_nosec',
+                'args': [],  # Default: 20 rounds × 3 local epochs
                 'estimated_time': 8
             },
             {
-                'name': 'fl_serverDP',
-                'script': 'fl_flexible',
-                'args': ['--epsilon', '8.0', '--no-flame', '--no-adversarial',
-                        '--experiment_name', 'fl_serverDP'],
-                'estimated_time': 8
-            },
-            {
-                'name': 'fl_flame',
-                'script': 'fl_flexible',
-                'args': ['--no-server-dp', '--no-adversarial',
-                        '--experiment_name', 'fl_flame'],
-                'estimated_time': 8
-            },
-            {
-                'name': 'fl_full',
-                'script': 'fl_flexible',
-                'args': ['--experiment_name', 'fl_full'],
-                'estimated_time': 8
+                'name': 'fl_secure',
+                'script': 'fl_secure',
+                'args': [],  # Default: DP + FLAME + adversarial
+                'estimated_time': 10
             }
         ]
     },
     
     # ==========================================================================
-    # Table 3: Privacy-Utility Trade-off
+    # Table 3: Privacy-Utility Trade-off (2-layer architecture)
+    # NOTE: Nécessite que p3_train_federated_secure_2layers.py accepte --epsilon
     # ==========================================================================
     'privacy_tradeoff': {
-        'description': 'Evaluate different epsilon values',
+        'description': 'Evaluate different epsilon values (server-side DP)',
         'runs': [
             {
                 'name': 'eps_inf',
-                'script': 'fl_flexible',
-                'args': ['--no-server-dp', '--experiment_name', 'privacy_eps_inf'],
+                'script': 'fl_secure',
+                'args': ['--no-server-dp'],
                 'estimated_time': 8
             },
             {
                 'name': 'eps_16',
-                'script': 'fl_flexible',
-                'args': ['--epsilon', '16.0', '--experiment_name', 'privacy_eps_16'],
+                'script': 'fl_secure',
+                'args': ['--epsilon', '16.0'],
                 'estimated_time': 8
             },
             {
                 'name': 'eps_8',
-                'script': 'fl_flexible',
-                'args': ['--epsilon', '8.0', '--experiment_name', 'privacy_eps_8'],
+                'script': 'fl_secure',
+                'args': ['--epsilon', '8.0'],
                 'estimated_time': 8
             },
             {
                 'name': 'eps_4',
-                'script': 'fl_flexible',
-                'args': ['--epsilon', '4.0', '--experiment_name', 'privacy_eps_4'],
+                'script': 'fl_secure',
+                'args': ['--epsilon', '4.0'],
                 'estimated_time': 8
             },
             {
                 'name': 'eps_2',
-                'script': 'fl_flexible',
-                'args': ['--epsilon', '2.0', '--experiment_name', 'privacy_eps_2'],
+                'script': 'fl_secure',
+                'args': ['--epsilon', '2.0'],
                 'estimated_time': 8
             },
             {
                 'name': 'eps_1',
-                'script': 'fl_flexible',
-                'args': ['--epsilon', '1.0', '--experiment_name', 'privacy_eps_1'],
+                'script': 'fl_secure',
+                'args': ['--epsilon', '1.0'],
                 'estimated_time': 8
             }
         ]
@@ -158,9 +158,10 @@ EXPERIMENTS = {
     
     # ==========================================================================
     # Table 5: Ablation - GCN Layers
+    # NOTE: Utilise p3_train_federated_flexible.py avec --num_layers variable
     # ==========================================================================
     'ablation_layers': {
-        'description': 'Evaluate different number of GCN layers',
+        'description': 'Evaluate different number of GCN layers (1-5)',
         'runs': [
             {
                 'name': 'layers_1',
@@ -196,52 +197,31 @@ EXPERIMENTS = {
     },
     
     # ==========================================================================
-    # Table 6: Ablation - Local Epochs
+    # Table 6: Ablation - Local Epochs (2-layer architecture)
     # ==========================================================================
     'ablation_epochs': {
         'description': 'Evaluate different local epochs per round',
         'runs': [
             {
                 'name': 'epochs_1',
-                'script': 'fl_flexible',
-                'args': ['--local_epochs', '1', '--rounds', '35',
-                        '--experiment_name', 'ablation_epochs_1'],
-                'estimated_time': 6
+                'script': 'fl_secure',
+                'args': ['--local_epochs', '1', '--rounds', '60'],
+                'estimated_time': 8
             },
             {
                 'name': 'epochs_3',
-                'script': 'fl_flexible',
-                'args': ['--local_epochs', '3', '--rounds', '20',
-                        '--experiment_name', 'ablation_epochs_3'],
+                'script': 'fl_secure',
+                'args': ['--local_epochs', '3', '--rounds', '20'],
                 'estimated_time': 8
             },
             {
                 'name': 'epochs_5',
-                'script': 'fl_flexible',
-                'args': ['--local_epochs', '5', '--rounds', '15',
-                        '--experiment_name', 'ablation_epochs_5'],
-                'estimated_time': 8
-            },
-            {
-                'name': 'epochs_7',
-                'script': 'fl_flexible',
-                'args': ['--local_epochs', '7', '--rounds', '12',
-                        '--experiment_name', 'ablation_epochs_7'],
+                'script': 'fl_secure',
+                'args': ['--local_epochs', '5', '--rounds', '12'],
                 'estimated_time': 8
             }
         ]
     },
-    
-    # ==========================================================================
-    # Table 7: Ablation - Label Distribution
-    # NOTE: Cette expérience nécessite une implémentation différente
-    # La distribution de labels affecte la partition des données entre exchanges,
-    # pas le split train/val/test. Désactivée pour l'instant.
-    # ==========================================================================
-    # 'ablation_distribution': {
-    #     'description': 'Evaluate different label distributions',
-    #     'runs': [...]
-    # }
 }
 
 
@@ -251,14 +231,42 @@ EXPERIMENTS = {
 
 def get_script_path(script_type: str) -> str:
     """Get the path to the script based on type."""
-    if script_type == 'baseline':
-        return BASELINE_SCRIPT
-    elif script_type == 'fl_flexible':
-        return FL_FLEXIBLE_SCRIPT
-    elif script_type == 'security_eval':
-        return SECURITY_EVAL_SCRIPT
-    else:
+    scripts = {
+        'baseline': BASELINE_SCRIPT,
+        'fl_nosec': FL_NOSEC_SCRIPT,
+        'fl_secure': FL_SECURE_SCRIPT,
+        'fl_flexible': FL_FLEXIBLE_SCRIPT,
+        'security_eval': SECURITY_EVAL_SCRIPT,
+    }
+    
+    if script_type not in scripts:
         raise ValueError(f"Unknown script type: {script_type}")
+    
+    return scripts[script_type]
+
+
+def check_scripts_exist():
+    """Verify all required scripts exist."""
+    scripts = {
+        'Baseline (2 layers)': BASELINE_SCRIPT,
+        'FL NoSec (2 layers)': FL_NOSEC_SCRIPT,
+        'FL Secure (2 layers)': FL_SECURE_SCRIPT,
+        'Security Eval (2 layers)': SECURITY_EVAL_SCRIPT,
+    }
+    
+    missing = []
+    for name, path in scripts.items():
+        if not os.path.exists(path):
+            missing.append(f"  ✗ {name}: {path}")
+    
+    if missing:
+        print("\n⚠️  MISSING SCRIPTS:")
+        for m in missing:
+            print(m)
+        print("\nPlease ensure all 2-layer scripts are in the project root.")
+        return False
+    
+    return True
 
 
 def run_single_experiment(run_config: Dict, dry_run: bool = False) -> Dict:
@@ -273,6 +281,7 @@ def run_single_experiment(run_config: Dict, dry_run: bool = False) -> Dict:
     
     print(f"\n{'='*60}")
     print(f"Running: {name}")
+    print(f"Script:  {os.path.basename(script_path)}")
     print(f"Command: {' '.join(cmd)}")
     print(f"{'='*60}")
     
@@ -280,12 +289,17 @@ def run_single_experiment(run_config: Dict, dry_run: bool = False) -> Dict:
         print("  [DRY RUN] Skipping execution")
         return {'status': 'skipped', 'name': name}
     
+    # Check if script exists
+    if not os.path.exists(script_path):
+        print(f"  ✗ Script not found: {script_path}")
+        return {'status': 'failed', 'name': name, 'error': 'Script not found'}
+    
     start_time = time.time()
     
     try:
         result = subprocess.run(
             cmd,
-            capture_output=False,  # Afficher la sortie en temps réel
+            capture_output=False,
             text=True,
             check=True
         )
@@ -353,16 +367,15 @@ def estimate_total_time(experiments: List[str]) -> int:
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Run all experiments for USENIX Security paper',
+        description='Run all experiments for USENIX Security paper (2-layer GCN)',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  python run_all_experiments.py                      # Run all experiments
-  python run_all_experiments.py --only main_comparison
-  python run_all_experiments.py --only privacy_tradeoff ablation_layers
-  python run_all_experiments.py --skip byzantine_attack
-  python run_all_experiments.py --dry-run            # Show what would run
-  python run_all_experiments.py --list               # List all experiments
+  python run_all_experiments_2layers.py                      # Run all
+  python run_all_experiments_2layers.py --only main_comparison
+  python run_all_experiments_2layers.py --skip byzantine_attack
+  python run_all_experiments_2layers.py --dry-run            # Show commands
+  python run_all_experiments_2layers.py --list               # List experiments
         """
     )
     
@@ -371,17 +384,18 @@ Examples:
     parser.add_argument('--skip', nargs='+', default=None,
                         help='Skip these experiment groups')
     parser.add_argument('--dry-run', action='store_true',
-                        help='Show what would be executed without running')
+                        help='Show commands without running')
     parser.add_argument('--list', action='store_true',
                         help='List all available experiments')
     parser.add_argument('--generate-tables', action='store_true',
-                        help='Only generate LaTeX tables from existing results')
+                        help='Generate LaTeX tables from existing results')
     
     args = parser.parse_args()
     
     # List experiments
     if args.list:
-        print("\nAvailable experiment groups:")
+        print("\n" + "="*60)
+        print("AVAILABLE EXPERIMENTS (2-layer GCN architecture)")
         print("="*60)
         for name, config in EXPERIMENTS.items():
             n_runs = len(config['runs'])
@@ -391,13 +405,25 @@ Examples:
             print(f"    Runs: {n_runs}")
             print(f"    Estimated time: ~{est_time} minutes")
             print(f"    Run names: {', '.join(r['name'] for r in config['runs'])}")
+        
+        print("\n" + "="*60)
+        print("SCRIPTS USED:")
+        print("="*60)
+        print(f"  Baseline:      {BASELINE_SCRIPT}")
+        print(f"  FL NoSec:      {FL_NOSEC_SCRIPT}")
+        print(f"  FL Secure:     {FL_SECURE_SCRIPT}")
+        print(f"  Security Eval: {SECURITY_EVAL_SCRIPT}")
+        print(f"  FL Flexible:   {FL_FLEXIBLE_SCRIPT}")
         return
     
     # Generate tables only
     if args.generate_tables:
         print("Generating LaTeX tables from existing results...")
         generate_script = os.path.join(SCRIPTS_DIR, 'generate_latex_tables.py')
-        subprocess.run(['python', generate_script])
+        if os.path.exists(generate_script):
+            subprocess.run(['python', generate_script])
+        else:
+            print(f"Table generation script not found: {generate_script}")
         return
     
     # Determine which experiments to run
@@ -413,13 +439,24 @@ Examples:
     total_time = estimate_total_time(experiments_to_run)
     
     print("\n" + "="*70)
-    print("EXPERIMENT ORCHESTRATOR")
+    print("EXPERIMENT ORCHESTRATOR (2-LAYER GCN ARCHITECTURE)")
     print("="*70)
+    print(f"\nArchitecture: 2 GCN layers (optimal per ablation study)")
+    print(f"Fair comparison: Baseline 60 epochs = FL 20 rounds × 3 epochs")
+    print(f"\nScripts (all 2-layer versions):")
+    print(f"  Baseline: {os.path.basename(BASELINE_SCRIPT)}")
+    print(f"  FL NoSec: {os.path.basename(FL_NOSEC_SCRIPT)}")
+    print(f"  FL Secure: {os.path.basename(FL_SECURE_SCRIPT)}")
     print(f"\nExperiments to run: {experiments_to_run}")
     print(f"Estimated total time: ~{total_time} minutes ({total_time/60:.1f} hours)")
     print(f"Dry run: {args.dry_run}")
     
+    # Check scripts exist
     if not args.dry_run:
+        if not check_scripts_exist():
+            print("\n⚠️  Some scripts are missing. Aborting.")
+            sys.exit(1)
+        
         print("\n⚠️  Starting experiments. Press Ctrl+C to abort.")
         time.sleep(3)
     
@@ -466,6 +503,7 @@ Examples:
     # Save summary
     summary = {
         'timestamp': datetime.now().isoformat(),
+        'architecture': '2_layers',
         'experiments': experiments_to_run,
         'results': all_results,
         'total_elapsed_seconds': total_elapsed,
@@ -476,7 +514,7 @@ Examples:
         }
     }
     
-    summary_path = os.path.join(RESULTS_DIR, 'experiment_summary.json')
+    summary_path = os.path.join(RESULTS_DIR, 'experiment_summary_2layers.json')
     with open(summary_path, 'w') as f:
         json.dump(summary, f, indent=2)
     print(f"\n✓ Summary saved: {summary_path}")
