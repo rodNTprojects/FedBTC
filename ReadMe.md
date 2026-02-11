@@ -289,7 +289,7 @@ The project follows a sequential pipeline. Each phase depends on the outputs of 
 │  ├── Step 6: Create criminal entity database                       │
 │  ├── Step 7: Split merchants 90% known / 10% unknown               │
 │  ├── Step 8: Partition data for K=3 federated exchanges             │
-│  └── Step 9: Add 25 calibrated proxy features                      │
+│  └── Step 9: Add 20 calibrated proxy + 6 merchant features         │
 │      OUTPUT → data/federated_enriched/exchange_{0,1,2}_enriched.pkl │
 │                                                                      │
 │  PHASE 2: Baseline Training (p2_train_baseline_2layers.py)           │
@@ -320,22 +320,40 @@ The project follows a sequential pipeline. Each phase depends on the outputs of 
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
-### Feature Engineering (25 Proxy Features)
+### Feature Engineering
 
-Since Elliptic's 166 features are anonymized and lack exchange-discriminating power, we add 25 scientifically calibrated proxy features:
+The Elliptic dataset provides 165 anonymized features organized into 49 temporal snapshots. Since these features lack exchange-discriminating power, we augment them with 26 additional features:
 
-| Category | Features (count) | Calibration Source |
-|----------|------------------|--------------------|
-| Fee structure | fee_percentage, fee_tier, ... (6) | BABD-13 + CoinMarketCap 2024 |
-| Volume patterns | volume_scale, volume_class, ... (6) | BABD-13 + Zhou 2023 |
-| Temporal/hour | synthetic_hour, timezone_proxy, ... (7) | Juhász et al. 2018 |
-| Liquidity | liquidity_score, processing_speed, ... (6) | BABD-13 + Kaiko Benchmark |
+| Category | Count | Description |
+|----------|-------|-------------|
+| **Elliptic original** | 165 | Anonymized transaction features (49 timesteps) |
+| **Calibration proxy** | 20 | Exchange-discriminating features |
+| **Merchant category** | 6 | One-hot encoding (incl. No Merchant) |
+| **Total** | **191** | |
 
-Total feature dimension: **191** (166 original + 25 proxy).
+#### Calibration Proxy Features (20)
+
+| Category | Features | Calibration Source |
+|----------|----------|-------------------|
+| Fee structure | fee_percentage, fee_tier, ... (5) | BABD-13 + CoinMarketCap 2024 |
+| Volume patterns | volume_scale, volume_class, ... (5) | BABD-13 + Zhou 2023 |
+| Temporal/hour | synthetic_hour, timezone_proxy, ... (6) | Juhász et al. 2018 |
+| Liquidity | liquidity_score, processing_speed, ... (4) | BABD-13 + Kaiko Benchmark |
+
+#### Merchant Categories (6)
+
+| ID | Category | Description |
+|----|----------|-------------|
+| 0 | No Merchant | Legitimate transactions |
+| 1 | E-commerce | BitPay, Coinbase Commerce |
+| 2 | Gambling | Stake, BC.Game |
+| 3 | Services | VPN, Hosting |
+| 4 | Retail | Physical stores |
+| 5 | Luxury | High-value goods |
 
 ### Model Architecture
 ```
-Input (191 features)
+Input (191 features = 165 Elliptic + 20 calibration + 6 merchant)
     │
     ├── GCN Layer 1 (191 → 128) + BatchNorm + ReLU + Dropout(0.3)
     ├── GCN Layer 2 (128 → 128) + BatchNorm + ReLU + Dropout(0.3)
@@ -377,7 +395,6 @@ Server-side DP applies noise once per round (T=20 total) instead of client-side 
 **Key insight**: FL-Secure outperforms the centralized baseline by +9.29% (forward) and +9.50% (backward) while providing formal differential privacy guarantees.
 
 ---
-
 ## Quick Start
 
 Once installation and dataset download are complete:
@@ -722,6 +739,7 @@ If `babd.zip` is too large or unavailable, the pipeline uses `config/calibration
 
 
 This project is developed for academic research purposes. Please contact the authors before any commercial use.
+
 
 
 
