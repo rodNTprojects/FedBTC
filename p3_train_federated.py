@@ -1,18 +1,18 @@
 """
 ================================================================================
 Script: p3_train_federated.py (V2 - OPTIMIZED)
-Description: FEDERATED LEARNING - Dual Attribution avec Catégories
-Phase 3 du pipeline - Compare FL vs Baseline centralisé
+Description: FEDERATED LEARNING - Dual Attribution avec CatÃ©gories
+Phase 3 du pipeline - Compare FL vs Baseline centralisÃ©
 
 CHANGEMENTS V2:
-- Backward: 6 catégories au lieu de 501 merchants
-- Focal Loss pour gérer le déséquilibre de classes
-- Random split (cohérent avec baseline)
-- Features discriminatives générées si absentes
-- Évaluation par Accuracy au lieu de Hit@K
+- Backward: 6 catÃ©gories au lieu de 501 merchants
+- Focal Loss pour gÃ©rer le dÃ©sÃ©quilibre de classes
+- Random split (cohÃ©rent avec baseline)
+- Features discriminatives gÃ©nÃ©rÃ©es si absentes
+- Ã‰valuation par Accuracy au lieu de Hit@K
 
 CATEGORIES:
-  0 = NO_MERCHANT (ignoré)
+  0 = NO_MERCHANT (ignorÃ©)
   1 = E-commerce
   2 = Gambling
   3 = Services
@@ -45,6 +45,10 @@ from typing import Dict, List, Tuple, Optional
 from copy import deepcopy
 from collections import Counter
 
+# === FIX: Always save relative to script location ===
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+os.chdir(SCRIPT_DIR)
+
 # Flower imports (avec fallback)
 try:
     import flwr as fl
@@ -55,7 +59,7 @@ try:
     from flwr.server.strategy import FedAvg
     FLOWER_AVAILABLE = True
 except ImportError:
-    print("⚠ Flower not installed. Using manual FL implementation.")
+    print("âš  Flower not installed. Using manual FL implementation.")
     print("  Install with: pip install flwr")
     FLOWER_AVAILABLE = False
 
@@ -113,21 +117,19 @@ class FocalLoss(nn.Module):
 # ============================================================================
 
 class DualAttributionModel(nn.Module):
-    """Dual Attribution Model V2 - With Categories"""
+    """Dual Attribution Model V2 - With Categories (2 layers - optimal)"""
     
     def __init__(self, config: Dict):
         super().__init__()
         self.config = config
         
-        # GNN Backbone
+        # GNN Backbone (2 layers - optimal per ablation)
         self.convs = nn.ModuleList([
             GCNConv(config['in_channels'], config['hidden_dim']),
-            GCNConv(config['hidden_dim'], config['hidden_dim']),
             GCNConv(config['hidden_dim'], config['hidden_dim'])
         ])
         
         self.batch_norms = nn.ModuleList([
-            nn.BatchNorm1d(config['hidden_dim']),
             nn.BatchNorm1d(config['hidden_dim']),
             nn.BatchNorm1d(config['hidden_dim'])
         ])
@@ -635,9 +637,9 @@ def run_manual_fl(
         if combined > best_metric:
             best_metric = combined
             best_params = server.get_parameters()
-            improved = " ★"
+            improved = " â˜…"
         
-        print(f"  → Forward: {avg_forward:.2%}, Backward: {avg_backward:.2%}{improved}")
+        print(f"  â†’ Forward: {avg_forward:.2%}, Backward: {avg_backward:.2%}{improved}")
     
     # Load best parameters
     if best_params:
@@ -720,7 +722,7 @@ def run_flower_fl(
         return initial_model, {'flower_history': history}
         
     except Exception as e:
-        print(f"\n⚠ Flower failed: {e}")
+        print(f"\nâš  Flower failed: {e}")
         print("Falling back to manual FL...")
         return run_manual_fl(exchange_data, model_config, device, num_rounds, local_epochs, lr, use_dp)
 
@@ -819,8 +821,8 @@ def main(args):
     print(f"  Backward Accuracy: {avg_backward:.2%}")
     
     # Compare with baseline targets
-    print(f"\n{'✅' if avg_forward >= 0.70 else '⚠️'} Forward target (≥70%): {avg_forward:.2%}")
-    print(f"{'✅' if avg_backward >= 0.60 else '⚠️'} Backward target (≥60%): {avg_backward:.2%}")
+    print(f"\n{'âœ…' if avg_forward >= 0.70 else 'âš ï¸'} Forward target (â‰¥70%): {avg_forward:.2%}")
+    print(f"{'âœ…' if avg_backward >= 0.60 else 'âš ï¸'} Backward target (â‰¥60%): {avg_backward:.2%}")
     
     # Save model
     os.makedirs('results/models', exist_ok=True)
@@ -838,7 +840,7 @@ def main(args):
             'alpha_backward': args.alpha_backward
         }
     }, model_path)
-    print(f"\n✓ Model saved: {model_path}")
+    print(f"\nâœ“ Model saved: {model_path}")
     
     # # Save results
     # results = {
@@ -866,7 +868,7 @@ def main(args):
     # results_path = 'results/evaluations/federated_results.json'
     # with open(results_path, 'w') as f:
     #     json.dump(results, f, indent=2, default=str)
-    # print(f"✓ Results saved: {results_path}")
+    # print(f"âœ“ Results saved: {results_path}")
 
      # Collect per-category metrics for each exchange
     all_per_category = []
@@ -909,7 +911,7 @@ def main(args):
             'in_channels': model_config['in_channels'],
             'hidden_dim': model_config['hidden_dim'],
             'dropout': model_config['dropout'],
-            'num_gcn_layers': 3
+            'num_gcn_layers': 2
         },
         
         # === TRAINING CONFIG ===
@@ -984,7 +986,7 @@ def main(args):
     results_path = 'results/evaluations/federated_results.json'
     with open(results_path, 'w') as f:
         json.dump(results, f, indent=2, default=str)
-    print(f"✓ Results saved: {results_path}")
+    print(f"âœ“ Results saved: {results_path}")
     
     # Comparison summary
     print("\n" + "="*70)
