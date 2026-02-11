@@ -2,17 +2,17 @@
 ================================================================================
 Script: p2_train_baseline.py (V2 - OPTIMIZED)
 Description: BASELINE TRAINING - Dual Attribution Model (Forward + Backward)
-Phase 2 du pipeline - Utilise les données enrichies de la Phase 1
+Phase 2 du pipeline - Utilise les donnÃ©es enrichies de la Phase 1
 
 CHANGEMENTS V2:
-- Backward: 6 catégories au lieu de 501 merchants
-- Focal Loss pour gérer le déséquilibre de classes
+- Backward: 6 catÃ©gories au lieu de 501 merchants
+- Focal Loss pour gÃ©rer le dÃ©sÃ©quilibre de classes
 - Class weighting automatique
-- Features discriminatives générées si absentes
-- Alpha backward augmenté
+- Features discriminatives gÃ©nÃ©rÃ©es si absentes
+- Alpha backward augmentÃ©
 
 CATEGORIES:
-  0 = NO_MERCHANT (ignoré dans le loss)
+  0 = NO_MERCHANT (ignorÃ© dans le loss)
   1 = E-commerce (BitPay, Coinbase Commerce)
   2 = Gambling (Stake, BC.Game)
   3 = Services (VPN, Hosting)
@@ -44,6 +44,10 @@ from datetime import datetime
 from typing import Dict, List, Tuple, Optional
 from collections import Counter
 
+# === FIX: Always save relative to script location ===
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+os.chdir(SCRIPT_DIR)
+
 
 # ============================================================================
 # CATEGORY CONFIGURATION
@@ -58,7 +62,7 @@ CATEGORY_NAMES = {
     5: 'Luxury'
 }
 
-# Feature patterns par catégorie: (mean, std) pour chaque feature discriminative
+# Feature patterns par catÃ©gorie: (mean, std) pour chaque feature discriminative
 CATEGORY_PATTERNS = {
     # cat: [(amount), (freq), (temporal), (weekend), (addr_reuse), (batch)]
     0: [(0, 1), (0, 1), (0, 1), (0, 1), (0, 1), (0, 1)],           # NO_MERCHANT
@@ -71,7 +75,7 @@ CATEGORY_PATTERNS = {
 
 
 # ============================================================================
-# FOCAL LOSS (pour gérer le déséquilibre de classes)
+# FOCAL LOSS (pour gÃ©rer le dÃ©sÃ©quilibre de classes)
 # ============================================================================
 
 class FocalLoss(nn.Module):
@@ -116,7 +120,7 @@ class DualAttributionModel(nn.Module):
     Dual Attribution Model for Bitcoin Forensics (V2 - Categories)
     
     Architecture:
-    - GNN Backbone: 3 GCN layers (captures k-hop patterns)
+    - GNN Backbone: 2 GCN layers (optimal based on ablation study)
     - Forward Head: Exchange classifier (3 classes)
     - Backward Head: Category classifier (6 classes)
     """
@@ -125,15 +129,13 @@ class DualAttributionModel(nn.Module):
         super().__init__()
         self.config = config
         
-        # ===== GNN BACKBONE =====
+        # ===== GNN BACKBONE (2 layers - optimal per ablation) =====
         self.convs = nn.ModuleList([
             GCNConv(config['in_channels'], config['hidden_dim']),
-            GCNConv(config['hidden_dim'], config['hidden_dim']),
             GCNConv(config['hidden_dim'], config['hidden_dim'])
         ])
         
         self.batch_norms = nn.ModuleList([
-            nn.BatchNorm1d(config['hidden_dim']),
             nn.BatchNorm1d(config['hidden_dim']),
             nn.BatchNorm1d(config['hidden_dim'])
         ])
@@ -154,7 +156,7 @@ class DualAttributionModel(nn.Module):
         )
         
         # ===== BACKWARD HEAD (Category - 6 classes) =====
-        # Simplifié car moins de classes
+        # SimplifiÃ© car moins de classes
         self.backward_head = nn.Sequential(
             nn.Linear(config['hidden_dim'], config['hidden_dim'] // 2),
             nn.BatchNorm1d(config['hidden_dim'] // 2),
@@ -403,10 +405,10 @@ def load_enriched_data(data_dir: str = 'data/federated_enriched') -> Tuple[pd.Da
         
         if os.path.exists(enriched_path):
             df = pd.read_pickle(enriched_path)
-            print(f"  ✓ Exchange {i}: {len(df):,} rows (enriched)")
+            print(f"  âœ“ Exchange {i}: {len(df):,} rows (enriched)")
         elif os.path.exists(original_path):
             df = pd.read_pickle(original_path)
-            print(f"  ⚠ Exchange {i}: {len(df):,} rows (original - no enrichment)")
+            print(f"  âš  Exchange {i}: {len(df):,} rows (original - no enrichment)")
         else:
             raise FileNotFoundError(f"No data found for exchange {i}")
         
@@ -435,7 +437,7 @@ def generate_discriminative_features(data: pd.DataFrame) -> pd.DataFrame:
     print("\n  Generating category-discriminative features...")
     
     if 'category_label' not in data.columns:
-        print("    ⚠ No category_label - cannot generate features")
+        print("    âš  No category_label - cannot generate features")
         return data
     
     category_labels = data['category_label'].values
@@ -461,7 +463,7 @@ def generate_discriminative_features(data: pd.DataFrame) -> pd.DataFrame:
     
     # Verify
     cat_features = [c for c in data.columns if c.startswith('cat_')]
-    print(f"    ✓ Category features: {len(cat_features)}")
+    print(f"    âœ“ Category features: {len(cat_features)}")
     
     return data
 
@@ -476,12 +478,12 @@ def create_pyg_data(data: pd.DataFrame, edges: pd.DataFrame) -> Data:
     
     # ===== HANDLE CATEGORY LABELS =====
     if 'category_label' in data.columns:
-        print("  ✓ Using existing category_label")
+        print("  âœ“ Using existing category_label")
     elif 'backward_label' in data.columns:
         print("  Converting backward_label to category_label...")
         data['category_label'] = data['backward_label'].apply(merchant_to_category)
     else:
-        print("  ⚠ No backward_label - creating dummy category_label")
+        print("  âš  No backward_label - creating dummy category_label")
         data['category_label'] = 0
     
     # ===== GENERATE DISCRIMINATIVE FEATURES IF NEEDED =====
@@ -490,7 +492,7 @@ def create_pyg_data(data: pd.DataFrame, edges: pd.DataFrame) -> Data:
         data = generate_discriminative_features(data)
     else:
         cat_features = [c for c in data.columns if c.startswith('cat_')]
-        print(f"  ✓ Found {len(cat_features)} existing cat_* features")
+        print(f"  âœ“ Found {len(cat_features)} existing cat_* features")
     
     # ===== COLLECT FEATURES =====
     feature_cols = []
@@ -750,7 +752,7 @@ def train(args):
                 'epoch': epoch,
                 'best_metric': best_metric
             }, 'results/models/baseline_dual_attribution.pt')
-            improved = " ★"
+            improved = " â˜…"
         else:
             patience_counter += 1
         
@@ -790,8 +792,8 @@ def train(args):
     fwd_ok = test_metrics['forward']['accuracy'] >= 0.85
     bwd_ok = test_metrics['backward']['accuracy'] >= 0.60
     
-    print(f"\n{'✅' if fwd_ok else '⚠️'} Forward target (≥85%): {test_metrics['forward']['accuracy']:.2%}")
-    print(f"{'✅' if bwd_ok else '⚠️'} Backward target (≥60%): {test_metrics['backward']['accuracy']:.2%}")
+    print(f"\n{'âœ…' if fwd_ok else 'âš ï¸'} Forward target (â‰¥85%): {test_metrics['forward']['accuracy']:.2%}")
+    print(f"{'âœ…' if bwd_ok else 'âš ï¸'} Backward target (â‰¥60%): {test_metrics['backward']['accuracy']:.2%}")
     
     # # Save results
     # results = {
@@ -814,8 +816,8 @@ def train(args):
     # with open(results_path, 'w') as f:
     #     json.dump(results, f, indent=2, default=str)
     
-    # print(f"\n✓ Results saved: {results_path}")
-    # print(f"✓ Model saved: results/models/baseline_dual_attribution.pt")
+    # print(f"\nâœ“ Results saved: {results_path}")
+    # print(f"âœ“ Model saved: results/models/baseline_dual_attribution.pt")
 
     # Save results - STANDARDIZED FORMAT FOR COMPARISON
     results = {
@@ -845,7 +847,7 @@ def train(args):
             'in_channels': model_config['in_channels'],
             'hidden_dim': model_config['hidden_dim'],
             'dropout': model_config['dropout'],
-            'num_gcn_layers': 3
+            'num_gcn_layers': 2
         },
         
         # === TRAINING CONFIG ===
@@ -911,8 +913,8 @@ def train(args):
     with open(results_path, 'w') as f:
         json.dump(results, f, indent=2, default=str)
     
-    print(f"\n✓ Results saved: {results_path}")
-    print(f"✓ Model saved: results/models/baseline_dual_attribution.pt")
+    print(f"\nâœ“ Results saved: {results_path}")
+    print(f"âœ“ Model saved: results/models/baseline_dual_attribution.pt")
     
     return test_metrics
 
