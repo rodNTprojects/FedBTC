@@ -63,6 +63,10 @@ from datetime import datetime
 from typing import Dict, List, Tuple, Optional
 from copy import deepcopy
 from collections import Counter
+
+# === FIX: Always save relative to script location ===
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+os.chdir(SCRIPT_DIR)
 from sklearn.cluster import DBSCAN
 import warnings
 warnings.filterwarnings('ignore')
@@ -129,20 +133,19 @@ class FocalLoss(nn.Module):
 # ============================================================================
 
 class DualAttributionModel(nn.Module):
-    """Dual Attribution GNN Model with GCN backbone."""
+    """Dual Attribution GNN Model with GCN backbone (2 layers - optimal)."""
     
     def __init__(self, config: Dict):
         super().__init__()
         self.config = config
         
+        # GNN Backbone (2 layers - optimal per ablation study)
         self.convs = nn.ModuleList([
             GCNConv(config['in_channels'], config['hidden_dim']),
-            GCNConv(config['hidden_dim'], config['hidden_dim']),
             GCNConv(config['hidden_dim'], config['hidden_dim'])
         ])
         
         self.batch_norms = nn.ModuleList([
-            nn.BatchNorm1d(config['hidden_dim']),
             nn.BatchNorm1d(config['hidden_dim']),
             nn.BatchNorm1d(config['hidden_dim'])
         ])
@@ -1273,7 +1276,7 @@ def main(args):
         'approach_name': 'Secure Federated Learning',
         'training_type': 'federated',
         'privacy_level': 'dp_enabled' if not args.no_server_dp else 'isolation',
-        'privacy_description': f'Server-side DP (ε={args.epsilon})' if not args.no_server_dp else 'Data isolation only',
+        'privacy_description': f'Server-side DP (Îµ={args.epsilon})' if not args.no_server_dp else 'Data isolation only',
         
         # === DATA CONFIG ===
         'data_config': {
@@ -1294,7 +1297,7 @@ def main(args):
             'in_channels': model_config['in_channels'],
             'hidden_dim': model_config['hidden_dim'],
             'dropout': model_config['dropout'],
-            'num_gcn_layers': 3
+            'num_gcn_layers': 2
         },
         
         # === TRAINING CONFIG ===
@@ -1390,6 +1393,18 @@ def main(args):
     with open(results_path, 'w') as f:
         json.dump(results, f, indent=2, default=str)
     print(f"Results saved: {results_path}")
+    
+    # Also save with epsilon-specific filename for privacy curve
+    epsilon_val = results['security_config']['epsilon']
+    if epsilon_val is None or results['security_config']['server_dp_enabled'] == False:
+        eps_filename = 'privacy_eps_inf.json'
+    else:
+        eps_filename = f'privacy_eps_{epsilon_val:.0f}.json' if epsilon_val == int(epsilon_val) else f'privacy_eps_{epsilon_val}.json'
+    
+    eps_path = f'results/evaluations/{eps_filename}'
+    with open(eps_path, 'w') as f:
+        json.dump(results, f, indent=2, default=str)
+    print(f"Privacy curve saved: {eps_path}")
 
 
 
