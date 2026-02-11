@@ -1,7 +1,8 @@
 """
 ================================================================================
-Script: p5_security_evaluation.py
+Script: p5_security_evaluation_2layers.py
 Description: SECURITY EVALUATION SUITE for Privacy-Preserving Bitcoin Attribution
+             (2 GCN Layers - optimal per ablation study)
 
 EVALUATIONS FOR USENIX SECURITY:
 ================================
@@ -52,6 +53,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from collections import Counter
+
+# === FIX: Always save relative to script location ===
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+os.chdir(SCRIPT_DIR)
 from datetime import datetime
 from typing import Dict, List, Tuple, Optional
 import pickle
@@ -77,15 +82,13 @@ class DualAttributionModel(nn.Module):
         num_exchanges = config.get('num_exchanges', 3)
         num_categories = config.get('num_categories', 6)
         
-        # GCN layers - using ModuleList like p3
+        # GCN layers - 2 layers (optimal per ablation study)
         self.convs = nn.ModuleList([
             GCNConv(in_channels, hidden_dim),
-            GCNConv(hidden_dim, hidden_dim),
             GCNConv(hidden_dim, hidden_dim)
         ])
         
         self.batch_norms = nn.ModuleList([
-            nn.BatchNorm1d(hidden_dim),
             nn.BatchNorm1d(hidden_dim),
             nn.BatchNorm1d(hidden_dim)
         ])
