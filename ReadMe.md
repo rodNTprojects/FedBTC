@@ -76,12 +76,6 @@ FedBTC/
 │   │   ├── split_merchants_known_unknown.py   # Step 7: 90/10 known/unknown split
 │   │   ├── partition_federated.py          # Step 8: K=3 exchange partitioning
 │   │   └── add_hybrid_features_elliptic.py # Step 9: calibrated proxy features (20 feat.)
-│   ├── training/
-│   │   └── train_attribution_baseline.py   # Core baseline training logic
-│   ├── evaluation/
-│   │   └── evaluate_fl_vs_baseline.py      # FL vs baseline comparison
-│   ├── investigation/
-│   │   └── investigate_transaction.py      # Transaction investigation workflow
 │   └── utils/
 │       ├── inspect_babd13.py               # BABD-13 dataset inspector
 │       └── extract_babd13_stats_local.py   # Local stats extraction utility
@@ -706,6 +700,7 @@ If `babd.zip` is too large or unavailable, the pipeline uses `config/calibration
 
 
 This project is developed for academic research purposes. Please contact the authors before any commercial use.
+
 
 
 
