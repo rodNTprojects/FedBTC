@@ -292,7 +292,7 @@ The project follows a sequential pipeline. Each phase depends on the outputs of 
 │  └── Step 9: Add 20 calibrated proxy + 6 merchant features         │
 │      OUTPUT → data/federated_enriched/exchange_{0,1,2}_enriched.pkl │
 │                                                                      │
-│  PHASE 2: Baseline Training (p2_train_baseline_2layers.py)           │
+│  PHASE 2: Baseline Training (p2_train_baseline.py)           │
 │  ├── Train centralized dual-attribution GNN (2 GCN layers)          │
 │  ├── 60 epochs, early stopping patience=20                          │
 │  └── OUTPUT → results/models/baseline_dual_attribution.pt           │
@@ -300,21 +300,21 @@ The project follows a sequential pipeline. Each phase depends on the outputs of 
 │      RESULTS → Forward: 79.53%, Backward: 80.76%                     │
 │                                                                      │
 │  PHASE 3: Federated Learning                                         │
-│  ├── Option A: p3_train_federated_2layers.py (FedAvg, no security)  │
+│  ├── Option A: p3_train_federated.py (FedAvg, no security)  │
 │  │   └── RESULTS → Forward: 88.66%, Backward: 90.81%                │
-│  └── Option B: p3_train_federated_secure_2layers.py (DP+FLAME+Adv) │
+│  └── Option B: p3_train_federated_secure.py (DP+FLAME+Adv) │
 │      └── RESULTS → Forward: 88.82%, Backward: 90.26% (ε=8.0)        │
 │      OUTPUT → results/models/federated_secure_dual_attribution.pt   │
 │               results/evaluations/federated_secure_results.json      │
 │                                                                      │
-│  PHASE 5: Security Evaluation (p5_security_evaluation_2layers.py)    │
+│  PHASE 5: Security Evaluation (p5_security_evaluation.py)    │
 │  ├── Byzantine Attack Simulation (FLAME)                            │
 │  ├── Adversarial Robustness (PGD)                                   │
 │  └── Defense Statistics                                             │
 │      OUTPUT → results/evaluations/security_evaluation_report.json   │
 │                                                                      │
 │  EXPERIMENTS: Ablation studies & LaTeX table generation               │
-│  └── experiments/run_all_experiments_2layers.py                      │
+│  └── experiments/run_all_experiments.py                      │
 │      OUTPUT → results/evaluations/evaluation_tables.tex             │
 │                                                                      │
 └─────────────────────────────────────────────────────────────────────┘
@@ -739,6 +739,7 @@ If `babd.zip` is too large or unavailable, the pipeline uses `config/calibration
 
 
 This project is developed for academic research purposes. Please contact the authors before any commercial use.
+
 
 
 
