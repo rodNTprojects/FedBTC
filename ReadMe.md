@@ -140,7 +140,7 @@ FedBTC/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/FedBTC.git
+git clone https://github.com/rodNTprojects/FedBTC.git
 cd FedBTC
 ```
 
@@ -708,4 +708,5 @@ If `babd.zip` is too large or unavailable, the pipeline uses `config/calibration
 
 
 This project is developed for academic research purposes. Please contact the authors before any commercial use.
+
 
