@@ -2,7 +2,7 @@
 """
 Script: p1_data_preparation.py
 Description: Phase 1 - Complete Data Preparation Pipeline (v2 with BABD-13 calibration)
-Author: Rodrigue
+Author: Anonymous
 Date: 2025-01-19
 
 Pipeline Steps:
