@@ -27,7 +27,23 @@ The model performs **dual attribution** on each transaction node:
 
 Both heads share a 2-layer GCN trunk and couple only through the summed
 gradient. The full per-round procedure is given as Algorithm 1 in the paper.
+## Installation and compute environment
 
+The pipeline was developed and evaluated on a CPU-only HPC cluster managed
+by SLURM. The reported runs used a multi-core x86-64 CPU partition; no GPU is
+required. Exact resource requests (account, partition, cores, walltime) are
+cluster-specific and must be adapted to your environment: in the provided
+`slurm/` scripts, replace the placeholders `<YOUR_SLURM_ACCOUNT>` and
+`<YOUR_CLUSTER>` with your own values, and adjust `--cpus-per-task`, walltime,
+and any partition/constraint flags to match your allocation and hardware.
+
+```bash
+python -m venv venvs/fedbtc
+source venvs/fedbtc/bin/activate            # Windows: venvs\fedbtc\Scripts\Activate.ps1
+pip install torch --index-url https://download.pytorch.org/whl/cpu
+pip install torch-geometric
+pip install -r requirements.txt
+```
 ## Defense stack
 
 Three independently toggleable layers, each targeting a distinct adversary:
